@@ -2,25 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FC26 Ultimate Hub</title>
+  <title>FC26 Prototype – Advanced</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    :root {
-      --bg: #050814;
-      --bg-alt: #0b1024;
-      --accent: #00ffc8;
-      --accent-soft: #00ffc822;
-      --gold: #f5c542;
-      --text: #f5f7ff;
-      --muted: #9aa0c2;
-      --danger: #ff4b6a;
-      --success: #3ddc97;
-      --card-bg: #11162b;
-      --border: #1b2340;
-      --silver: #c0c6d8;
-      --bronze: #b8860b;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -29,23 +13,20 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #1b2340 0, #050814 45%, #02030a 100%);
-      color: var(--text);
-      min-height: 100vh;
+      background: radial-gradient(circle at top, #0b1b3b 0%, #02040a 55%, #000000 100%);
+      color: #f5f5f5;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      background: linear-gradient(90deg, #07122a, #0f2348);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(90deg, #050814, #0b1024);
-      position: sticky;
-      top: 0;
-      z-index: 20;
     }
 
     .logo {
@@ -57,1977 +38,1526 @@
     .logo-icon {
       width: 32px;
       height: 32px;
-      border-radius: 10px;
-      background: conic-gradient(from 180deg, #00ffc8, #f5c542, #ff4b6a, #00ffc8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #050814;
-      box-shadow: 0 0 12px #00ffc866;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 20%, #ffe66d, #f4a261 40%, #1d3557 100%);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
     }
 
     .logo-text {
       font-weight: 700;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
       font-size: 14px;
-      color: var(--muted);
+      text-transform: uppercase;
+      color: #f1faee;
     }
 
-    .logo-text span {
-      color: var(--accent);
-    }
-
-    .top-actions {
+    .top-coins {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .pill {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #050814;
-    }
-
-    .pill span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px #00ffc866;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
-      transition: 0.15s ease;
+      font-size: 14px;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #050814;
-      box-shadow: 0 0 16px #00ffc866;
+    .coin-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe66d, #f4a261 40%, #8d5524 100%);
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 22px #00ffc899;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    main {
+    .main-layout {
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 0;
+      grid-template-columns: 260px 1fr 280px;
+      gap: 12px;
+      padding: 12px;
       flex: 1;
-      min-height: 0;
-    }
-
-    nav {
-      border-right: 1px solid var(--border);
-      padding: 16px 12px;
-      background: #050814;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .nav-section-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .nav-group {
-      margin-bottom: 12px;
-    }
-
-    .nav-item {
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: 0.12s ease;
-    }
-
-    .nav-item span.icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
-      background: #0b1024;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--accent);
-    }
-
-    .nav-item.active {
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
-    .nav-item:hover {
-      background: #0b1024;
-      color: var(--text);
-    }
-
-    .nav-footer {
-      margin-top: auto;
-      font-size: 11px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      padding-top: 10px;
-    }
-
-    .nav-footer strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .content {
-      padding: 16px 18px;
-      overflow-y: auto;
-    }
-
-    .mode-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .mode-title {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .mode-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .coins-display {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #050814;
-    }
-
-    .coins-display span.coin {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #f5c542 0, #b8860b 60%, #5a3a00 100%);
-      box-shadow: 0 0 10px #f5c54266;
-    }
-
-    .layout-grid {
-      display: grid;
-      grid-template-columns: 2.2fr 1.4fr;
-      gap: 14px;
-      align-items: flex-start;
     }
 
     .panel {
-      background: var(--card-bg);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 12px;
-      box-shadow: 0 12px 30px #00000066;
+      background: rgba(8, 15, 35, 0.92);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(10px);
     }
 
-    .panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .panel h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a8dadc;
       margin-bottom: 8px;
     }
 
-    .panel-title {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
+    .mode-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .panel-badge {
+    .mode-btn {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, #0b1b3b, #142850);
+      color: #f1faee;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .mode-btn span {
+      font-weight: 600;
+    }
+
+    .mode-btn small {
       font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .mode-btn.active,
+    .mode-btn:hover {
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      box-shadow: 0 0 12px rgba(69, 123, 157, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .sub-menu {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .sub-chip {
       padding: 4px 8px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      color: #f1faee;
+      background: rgba(13, 25, 52, 0.9);
+      cursor: pointer;
     }
 
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    .sub-chip.active {
+      background: linear-gradient(135deg, #e9c46a, #f4a261);
+      color: #1d3557;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .stadium-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 0%, #1d3557 0%, #02040a 55%, #000000 100%);
+    }
+
+    .stadium {
+      position: absolute;
+      inset: 40px 40px 60px 40px;
+      background: #0b3b2e;
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+      border: 4px solid #f1faee;
+    }
+
+    .pitch {
+      position: absolute;
+      inset: 16px;
+      border-radius: 18px;
+      border: 2px solid rgba(241, 250, 238, 0.7);
+      background: repeating-linear-gradient(
+        90deg,
+        #0b3b2e 0px,
+        #0b3b2e 40px,
+        #0f513f 40px,
+        #0f513f 80px
+      );
+    }
+
+    .center-circle {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid rgba(241, 250, 238, 0.7);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .half-line {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: rgba(241, 250, 238, 0.7);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .goal-box {
+      position: absolute;
+      width: 80px;
+      height: 160px;
+      border: 2px solid rgba(241, 250, 238, 0.7);
+    }
+
+    .goal-box.home {
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .goal-box.away {
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .player-disc {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #f1faee, #e9c46a 40%, #1d3557 100%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.08s ease;
+    }
+
+    .player-disc.home {
+      border: 2px solid #e9c46a;
+    }
+
+    .player-disc.away {
+      border: 2px solid #f4a261;
+    }
+
+    .player-disc span {
+      font-size: 9px;
+      font-weight: 700;
+      text-align: center;
+      color: #000;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+    }
+
+    .ball {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #cccccc 40%, #444444 100%);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+    }
+
+    .stadium-crowd {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .crowd-band {
+      position: absolute;
+      height: 26px;
+      left: 0;
+      right: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        #1d3557 0px,
+        #1d3557 12px,
+        #e63946 12px,
+        #e63946 24px,
+        #f1faee 24px,
+        #f1faee 36px
+      );
+      opacity: 0.35;
+      filter: blur(1px);
+    }
+
+    .crowd-band.top {
+      top: 8px;
+    }
+
+    .crowd-band.bottom {
+      bottom: 8px;
+    }
+
+    .stadium-lights {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .light-pole {
+      width: 60px;
+      height: 24px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 50% 0%, #ffffff, #f1faee 40%, #1d3557 100%);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.9);
+      opacity: 0.85;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
       gap: 10px;
-      max-height: 420px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 11px;
+    }
+
+    .hud-team {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hud-badge {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: radial-gradient(circle at 30% 20%, #e9c46a, #1d3557 60%, #000000 100%);
+    }
+
+    .hud-score {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .hud-time {
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    .hud-mode-tag {
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(69, 123, 157, 0.9);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .controls-bar {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 11px;
+    }
+
+    .ctrl-btn {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(13, 25, 52, 0.9);
+      color: #f1faee;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .ctrl-btn.primary {
+      background: linear-gradient(135deg, #e9c46a, #f4a261);
+      color: #1d3557;
+      font-weight: 600;
+    }
+
+    .right-panel-section {
+      margin-bottom: 10px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      max-height: 260px;
       overflow-y: auto;
       padding-right: 4px;
     }
 
     .player-card {
       position: relative;
-      border-radius: 14px;
-      padding: 8px;
-      background: radial-gradient(circle at top, #1b2340 0, #050814 60%);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-      transition: 0.12s ease;
-    }
-
-    .player-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px #00000088;
-      border-color: var(--accent-soft);
-    }
-
-    .card-rarity {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .rarity-gold {
-      background: #f5c54222;
-      color: var(--gold);
-      border: 1px solid #f5c54266;
-    }
-
-    .rarity-toty {
-      background: #00b3ff22;
-      color: #00b3ff;
-      border: 1px solid #00b3ff66;
-    }
-
-    .rarity-tots {
-      background: #3ddc9722;
-      color: #3ddc97;
-      border: 1px solid #3ddc9766;
-    }
-
-    .rarity-special {
-      background: #ff4b6a22;
-      color: #ff4b6a;
-      border: 1px solid #ff4b6a66;
-    }
-
-    .rarity-icon {
-      background: #ffffff22;
-      color: #ffffff;
-      border: 1px solid #ffffff66;
-    }
-
-    .rarity-hero {
-      background: #00ffc822;
-      color: #00ffc8;
-      border: 1px solid #00ffc866;
-    }
-
-    .rarity-silver {
-      background: #c0c6d822;
-      color: var(--silver);
-      border: 1px solid #c0c6d866;
-    }
-
-    .rarity-bronze {
-      background: #b8860b22;
-      color: var(--bronze);
-      border: 1px solid #b8860b66;
-    }
-
-    .player-face {
-      width: 100%;
-      height: 70px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #1b2340, #050814);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--muted);
-      border: 1px dashed #262c4a;
-    }
-
-    .player-name {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .player-meta {
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .player-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      margin-top: 4px;
-      font-size: 10px;
-    }
-
-    .stat-pill {
-      padding: 3px 4px;
-      border-radius: 999px;
-      background: #0b1024;
-      border: 1px solid #1b2340;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .stat-pill span.value {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .playstyles-row {
-      margin-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      font-size: 9px;
-    }
-
-    .playstyle-tag {
-      padding: 2px 6px;
-      border-radius: 999px;
-      border: 1px solid #262c4a;
-      color: var(--muted);
-    }
-
-    .playstyle-tag.gold {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .playstyle-tag.silver {
-      border-color: var(--silver);
-      color: var(--silver);
-    }
-
-    .roster-list {
-      max-height: 220px;
-      overflow-y: auto;
-      margin-top: 6px;
-      border-top: 1px solid #262c4a;
-      padding-top: 6px;
-    }
-
-    .roster-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      padding: 4px 0;
-      border-bottom: 1px dashed #262c4a;
-    }
-
-    .roster-item:last-child {
-      border-bottom: none;
-    }
-
-    .chemistry-bar {
-      margin-top: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #0b1024;
-      overflow: hidden;
-      border: 1px solid #262c4a;
-    }
-
-    .chemistry-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #ff4b6a, #f5c542, #3ddc97, #00ffc8);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .chemistry-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .stadium-view {
-      margin-top: 8px;
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: radial-gradient(circle at top, #1b2340 0, #050814 60%);
-      height: 220px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stadium-title {
-      position: absolute;
-      top: 8px;
-      left: 10px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-    }
-
-    .pitch {
-      position: absolute;
-      inset: 26px 18px 18px 18px;
-      border-radius: 12px;
-      background: radial-gradient(circle at center, #0b5c2b 0, #05331a 60%, #02160b 100%);
-      border: 2px solid #ffffff33;
-      box-shadow: inset 0 0 0 1px #ffffff22;
-    }
-
-    .pitch-line {
-      position: absolute;
-      border: 1px solid #ffffff55;
-      border-radius: 12px;
-    }
-
-    .pitch-line.center {
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 0;
-      border-top-width: 1px;
-    }
-
-    .pitch-circle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 1px solid #ffffff55;
-      transform: translate(-50%, -50%);
-    }
-
-    .disc {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffc8 0, #008f7a 60%, #00423a 100%);
-      box-shadow: 0 0 10px #00ffc866;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: #050814;
-    }
-
-    .disc.opponent {
-      background: radial-gradient(circle, #f5c542 0, #b8860b 60%, #5a3a00 100%);
-      box-shadow: 0 0 10px #f5c54266;
-    }
-
-    .disc-label {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 9px;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    .ball {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffffff 0, #cccccc 60%, #777777 100%);
-      box-shadow: 0 0 8px #ffffff88;
-    }
-
-    .match-controls {
-      margin-top: 8px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .match-log {
-      margin-top: 8px;
-      max-height: 120px;
-      overflow-y: auto;
-      font-size: 11px;
-      background: #050814;
-      border-radius: 8px;
-      border: 1px solid #262c4a;
       padding: 6px;
+      background: radial-gradient(circle at 20% 0%, #f1faee 0%, #1d3557 40%, #000000 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+      font-size: 10px;
+      cursor: pointer;
+      overflow: hidden;
     }
 
-    .log-line {
+    .player-card.toty {
+      background: radial-gradient(circle at 20% 0%, #f1faee 0%, #264653 40%, #000000 100%);
+      border-color: rgba(255, 215, 0, 0.7);
+      box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+    }
+
+    .player-card.tots {
+      background: radial-gradient(circle at 20% 0%, #f1faee 0%, #1d3557 40%, #000000 100%);
+      border-color: rgba(0, 255, 170, 0.7);
+      box-shadow: 0 0 18px rgba(0, 255, 170, 0.7);
+    }
+
+    .player-card.gold {
+      background: radial-gradient(circle at 20% 0%, #ffe8a3 0%, #c7923e 40%, #000000 100%);
+    }
+
+    .player-card.silver {
+      background: radial-gradient(circle at 20% 0%, #f1f1f1 0%, #b0b0b0 40%, #000000 100%);
+    }
+
+    .player-card.bronze {
+      background: radial-gradient(circle at 20% 0%, #f4a261 0%, #8d5524 40%, #000000 100%);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .card-rating {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .card-position {
+      font-size: 9px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .card-name {
+      font-size: 10px;
+      font-weight: 600;
       margin-bottom: 2px;
     }
 
-    .log-line strong {
-      color: var(--accent);
+    .card-face {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 20%, #f1faee, #e9c46a 40%, #1d3557 100%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 4px;
     }
 
-    .mode-tabs {
+    .card-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2px;
+      font-size: 9px;
+    }
+
+    .card-stat {
       display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
+      justify-content: space-between;
     }
 
-    .mode-tab {
-      padding: 6px 10px;
+    .card-tags {
+      margin-top: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .tag-pill {
+      padding: 1px 4px;
       border-radius: 999px;
-      border: 1px solid #262c4a;
+      font-size: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .tag-pill.playstyle {
+      background: rgba(69, 123, 157, 0.9);
+    }
+
+    .tag-pill.rare {
+      background: rgba(233, 196, 106, 0.9);
+      color: #1d3557;
+    }
+
+    .scroll-y {
+      max-height: 120px;
+      overflow-y: auto;
+      padding-right: 4px;
       font-size: 11px;
-      cursor: pointer;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
-    .mode-tab.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
+    .info-line {
+      margin-bottom: 4px;
+      opacity: 0.85;
     }
 
-    .career-layout {
-      display: grid;
-      grid-template-columns: 1.8fr 1.4fr;
-      gap: 14px;
-    }
-
-    .career-player-panel {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 10px;
-    }
-
-    .career-avatar {
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: radial-gradient(circle at top, #1b2340 0, #050814 60%);
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .career-avatar-face {
-      height: 90px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #1b2340, #050814);
-      border: 1px dashed #262c4a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .career-stats {
-      font-size: 11px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px;
-    }
-
-    .career-playstyles {
+    .formation-select {
       margin-top: 4px;
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
+    }
+
+    .formation-chip {
+      padding: 3px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       font-size: 9px;
+      cursor: pointer;
+      background: rgba(13, 25, 52, 0.9);
     }
 
-    .career-config {
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: #050814;
-      padding: 10px;
-      font-size: 11px;
+    .formation-chip.active {
+      background: linear-gradient(135deg, #e9c46a, #f4a261);
+      color: #1d3557;
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
-    .career-config label {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-    }
-
-    .career-config select {
-      width: 100%;
-      padding: 4px 6px;
-      border-radius: 6px;
-      border: 1px solid #262c4a;
-      background: #0b1024;
-      color: var(--text);
-      font-size: 11px;
-      margin-bottom: 6px;
-    }
-
-    .career-config .hint {
+    footer {
+      padding: 6px 12px;
       font-size: 10px;
-      color: var(--muted);
-      margin-top: 4px;
+      text-align: center;
+      color: rgba(241, 250, 238, 0.7);
     }
 
-    .career-pitch {
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: radial-gradient(circle at top, #1b2340 0, #050814 60%);
-      padding: 10px;
-    }
-
-    .career-pitch-inner {
-      border-radius: 10px;
-      background: radial-gradient(circle at center, #0b5c2b 0, #05331a 60%, #02160b 100%);
-      border: 2px solid #ffffff33;
-      height: 220px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .career-ball {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffffff 0, #cccccc 60%, #777777 100%);
-      box-shadow: 0 0 8px #ffffff88;
-    }
-
-    .career-player-disc {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00ffc8 0, #008f7a 60%, #00423a 100%);
-      box-shadow: 0 0 10px #00ffc866;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: #050814;
-    }
-
-    .career-log {
-      margin-top: 8px;
-      max-height: 120px;
-      overflow-y: auto;
-      font-size: 11px;
-      background: #050814;
-      border-radius: 8px;
-      border: 1px solid #262c4a;
-      padding: 6px;
-    }
-
-    .fantasy-layout {
-      display: grid;
-      grid-template-columns: 1.8fr 1.4fr;
-      gap: 14px;
-    }
-
-    .fantasy-panel {
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: #050814;
-      padding: 10px;
-      font-size: 11px;
-    }
-
-    .fantasy-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .fantasy-slot {
-      border-radius: 8px;
-      border: 1px dashed #262c4a;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--muted);
-      background: #0b1024;
-    }
-
-    .fantasy-slot.filled {
-      border-style: solid;
-      border-color: var(--accent);
-      color: var(--accent);
-      background: #050814;
-    }
-
-    .fantasy-chem {
-      margin-top: 8px;
-    }
-
-    .sbc-panel {
-      margin-top: 8px;
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: #050814;
-      padding: 10px;
-      font-size: 11px;
-    }
-
-    .sbc-requirements {
-      margin-top: 4px;
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .champions-panel {
-      margin-top: 8px;
-      border-radius: 12px;
-      border: 1px solid #262c4a;
-      background: #050814;
-      padding: 10px;
-      font-size: 11px;
-    }
-
-    .champions-fixtures {
-      margin-top: 4px;
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 960px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      nav {
-        display: none;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .layout-grid,
-      .career-layout,
-      .fantasy-layout {
-        grid-template-columns: 1fr;
-      }
+    footer span {
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 <header>
   <div class="logo">
-    <div class="logo-icon">26</div>
-    <div class="logo-text"><span>FC</span> Ultimate Hub</div>
+    <div class="logo-icon"></div>
+    <div class="logo-text">FC26 / FL26 Prototype</div>
   </div>
-  <div class="top-actions">
-    <div class="pill"><span></span> Live Engine v0.1 (Prototype)</div>
-    <button class="btn btn-ghost" id="resetAllBtn">Reset All Modes</button>
-    <button class="btn btn-primary" id="githubHintBtn">Ready for GitHub</button>
+  <div class="top-coins">
+    <div class="coin-icon"></div>
+    <div><strong>FUTCoins:</strong> <span id="coinsDisplay">50,000</span></div>
   </div>
 </header>
 
-<main>
-  <nav>
-    <div class="nav-group">
-      <div class="nav-section-title">Modes</div>
-      <div class="nav-item active" data-mode="manager">
-        <span class="icon">M</span>
-        Manager Mode
-      </div>
-      <div class="nav-item" data-mode="career">
-        <span class="icon">C</span>
-        Career Mode
-      </div>
-      <div class="nav-item" data-mode="fantasy">
-        <span class="icon">F</span>
-        Fantasy Team
+<main class="main-layout">
+  <!-- LEFT PANEL: MODES & META -->
+  <section class="panel">
+    <h2>Game Modes</h2>
+    <div class="mode-list">
+      <button class="mode-btn active" data-mode="manager">
+        <span>Manager Mode</span>
+        <small>Build squad • Simulate matches • AI vs AI</small>
+      </button>
+      <button class="mode-btn" data-mode="career">
+        <span>Career Mode</span>
+        <small>Control one player • Full stadium • Referee</small>
+      </button>
+      <button class="mode-btn" data-mode="fantasy">
+        <span>Fantasy Team</span>
+        <small>Free squad building • Chemistry • Draft style</small>
+      </button>
+      <button class="mode-btn" data-mode="worldcup">
+        <span>World Cup Mode</span>
+        <small>National teams • Knockout • Glory</small>
+      </button>
+      <button class="mode-btn" data-mode="ucl">
+        <span>Champions League</span>
+        <small>Club tournament • Bracket • Finals</small>
+      </button>
+      <button class="mode-btn" data-mode="sbc">
+        <span>SBC Hub</span>
+        <small>Squad Building Challenges • Rewards</small>
+      </button>
+    </div>
+
+    <div class="sub-menu">
+      <div class="sub-chip active" data-sub="toty">TOTY XI</div>
+      <div class="sub-chip" data-sub="tots">TOTS</div>
+      <div class="sub-chip" data-sub="special">Special Cards</div>
+      <div class="sub-chip" data-sub="gold">Gold</div>
+      <div class="sub-chip" data-sub="silver">Silver</div>
+      <div class="sub-chip" data-sub="bronze">Bronze</div>
+    </div>
+
+    <div style="margin-top:10px;">
+      <h2>Formation</h2>
+      <div class="formation-select" id="formationSelect">
+        <div class="formation-chip active" data-formation="4-3-3">4-3-3</div>
+        <div class="formation-chip" data-formation="4-4-2">4-4-2</div>
+        <div class="formation-chip" data-formation="4-2-3-1">4-2-3-1</div>
+        <div class="formation-chip" data-formation="3-5-2">3-5-2</div>
+        <div class="formation-chip" data-formation="4-1-2-1-2">4-1-2-1-2</div>
       </div>
     </div>
 
-    <div class="nav-group">
-      <div class="nav-section-title">Extras</div>
-      <div class="nav-item" data-mode="sbc">
-        <span class="icon">S</span>
-        SBCs
+    <div style="margin-top:10px;">
+      <h2>Playstyles</h2>
+      <div class="scroll-y" id="playstyleInfo">
+        <div class="info-line"><strong>Trivela:</strong> Outside‑foot curve shots & passes.</div>
+        <div class="info-line"><strong>Rabona:</strong> Flair cross/shot with leg wrap.</div>
+        <div class="info-line"><strong>Finesse:</strong> Curved shots into far corner.</div>
+        <div class="info-line"><strong>Power Shot:</strong> High‑power, long‑range rockets.</div>
+        <div class="info-line"><strong>Lob / Chip:</strong> Lifted ball over keeper or line.</div>
+        <div class="info-line"><strong>Tiki‑Taka:</strong> Short passing, high movement.</div>
+        <div class="info-line"><strong>Pressing:</strong> Aggressive off‑ball pressure.</div>
+        <div class="info-line"><strong>Playmaker:</strong> Vision, passing, through balls.</div>
+        <div class="info-line"><strong>Header Specialist:</strong> Strong aerial duels.</div>
+        <div class="info-line"><strong>Defensive Rock:</strong> Tackling, positioning, blocks.</div>
       </div>
-      <div class="nav-item" data-mode="ucl">
-        <span class="icon">U</span>
-        Champions League
+    </div>
+  </section>
+
+  <!-- CENTER: STADIUM / MATCH SIM -->
+  <section class="panel">
+    <h2>Stadium & Match Simulation</h2>
+    <div class="stadium-wrapper">
+      <div class="stadium">
+        <div class="pitch">
+          <div class="center-circle"></div>
+          <div class="half-line"></div>
+          <div class="goal-box home"></div>
+          <div class="goal-box away"></div>
+        </div>
+
+        <div class="stadium-crowd">
+          <div class="crowd-band top"></div>
+          <div class="crowd-band bottom"></div>
+        </div>
+
+        <div class="stadium-lights">
+          <div class="light-pole"></div>
+          <div class="light-pole"></div>
+        </div>
+
+        <div class="hud-overlay">
+          <div class="hud-team">
+            <div class="hud-badge"></div>
+            <span>Home XI</span>
+          </div>
+          <div class="hud-score" id="hudScore">0 - 0</div>
+          <div class="hud-time" id="hudTime">00:00</div>
+          <div class="hud-mode-tag" id="hudModeTag">Manager Sim</div>
+        </div>
+
+        <div class="controls-bar">
+          <button class="ctrl-btn primary" id="btnKickoff">Kickoff / Simulate</button>
+          <button class="ctrl-btn" id="btnPause">Pause</button>
+          <button class="ctrl-btn" id="btnCareerControl">Career: Control Player</button>
+          <button class="ctrl-btn" id="btnResetMatch">Reset Match</button>
+        </div>
+
+        <!-- Ball -->
+        <div class="ball" id="ball"></div>
+
+        <!-- Players (discs) will be injected here -->
+        <div id="playersLayer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: PLAYER CARDS, SQUAD, META -->
+  <section class="panel">
+    <div class="right-panel-section">
+      <h2>Player Cards (FC26)</h2>
+      <div class="card-grid" id="cardGrid">
+        <!-- Cards injected by JS -->
       </div>
     </div>
 
-    <div class="nav-footer">
-      Built as a <strong>FC26</strong>-style prototype.  
-      Drop this <strong>index.html</strong> into your GitHub repo and iterate.
+    <div class="right-panel-section">
+      <h2>Squad & Chemistry</h2>
+      <div class="scroll-y" id="squadInfo">
+        <div class="info-line"><strong>Manager Mode:</strong> You start with <strong>50,000 FUTCoins</strong>. Buy players, build your roster, and simulate matches against real clubs.</div>
+        <div class="info-line"><strong>Chemistry:</strong> Boosts performance when players share club, league, or nation. High chemistry = better passing, movement, and synergy.</div>
+        <div class="info-line"><strong>Positions:</strong> Strikers, second strikers, wingers, midfielders, defenders, fullbacks, goalkeepers—all balanced and stat‑driven.</div>
+        <div class="info-line"><strong>Stats apply:</strong> Low stats = weaker performance; high stats = elite performance. This affects shots, passes, pace, physical, defending, and reactions.</div>
+      </div>
     </div>
-  </nav>
 
-  <section class="content">
-    <!-- MANAGER MODE -->
-    <section id="managerModeSection">
-      <div class="mode-header">
-        <div>
-          <div class="mode-title">Manager Mode</div>
-          <div class="mode-subtitle">
-            Start with 50,000 FUTCoins, sign players, build your roster, simulate matches vs real clubs.
-          </div>
-        </div>
-        <div class="coins-display">
-          <span class="coin"></span>
-          <span>FUTCoins: <strong id="managerCoins">50000</strong></span>
-        </div>
+    <div class="right-panel-section">
+      <h2>Career Mode Setup</h2>
+      <div class="scroll-y" id="careerSetup">
+        <div class="info-line"><strong>Playstyles:</strong> At the start, pick <strong>3 Gold</strong> playstyles and <strong>1 Silver</strong. They boost your passing, shooting, dribbling, or defending.</div>
+        <div class="info-line"><strong>Control:</strong> In Career Mode, you control one player; all other players, referee, and environment are AI‑driven.</div>
+        <div class="info-line"><strong>World Cup:</strong> Choose a nation, play group stage and knockout rounds, and chase the trophy.</div>
       </div>
-
-      <div class="layout-grid">
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Transfer Market (WC26, Icons, Heroes, Specials)</div>
-            <div class="panel-badge">Click card to sign player</div>
-          </div>
-          <div class="cards-grid" id="marketGrid"></div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Squad & Match Engine</div>
-            <div class="panel-badge">Chemistry, playstyles, live discs</div>
-          </div>
-
-          <div>
-            <div class="mode-tabs">
-              <div class="mode-tab active" data-manager-tab="roster">Roster</div>
-              <div class="mode-tab" data-manager-tab="stadium">Stadium View</div>
-              <div class="mode-tab" data-manager-tab="log">Match Log</div>
-            </div>
-
-            <div id="managerRosterTab">
-              <div class="roster-list" id="managerRosterList"></div>
-              <div class="chemistry-bar">
-                <div class="chemistry-fill" id="managerChemistryFill"></div>
-              </div>
-              <div class="chemistry-label">
-                Chemistry: <span id="managerChemistryLabel">0</span> / 100  
-                · Balanced positions boost chemistry.
-              </div>
-            </div>
-
-            <div id="managerStadiumTab" class="hidden">
-              <div class="stadium-view">
-                <div class="stadium-title" id="stadiumTitle">Camp Nou (Prototype 2D Discs)</div>
-                <div class="pitch" id="pitch">
-                  <div class="pitch-line center"></div>
-                  <div class="pitch-circle"></div>
-                  <!-- Discs and ball will be injected here -->
-                </div>
-              </div>
-              <div class="match-controls">
-                <button class="btn btn-primary" id="simulateMatchBtn">Simulate Match</button>
-                <span>Opponent: <strong id="opponentClubLabel">Real Madrid</strong></span>
-                <span>Result: <strong id="matchResultLabel">-</strong></span>
-              </div>
-            </div>
-
-            <div id="managerLogTab" class="hidden">
-              <div class="match-log" id="matchLog"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CAREER MODE -->
-    <section id="careerModeSection" class="hidden">
-      <div class="mode-header">
-        <div>
-          <div class="mode-title">Career Mode</div>
-          <div class="mode-subtitle">
-            Join clubs, step onto the pitch, equip playstyles (Trivela, Rabona, Finesse, Chip, Lob) and perform skills.
-          </div>
-        </div>
-        <div class="coins-display">
-          <span class="coin"></span>
-          <span>Playstyles: <strong id="careerPlaystyleCount">0 / 4</strong></span>
-        </div>
-      </div>
-
-      <div class="career-layout">
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Player & Playstyles</div>
-            <div class="panel-badge">Pick 3 gold + 1 silver</div>
-          </div>
-
-          <div class="career-player-panel">
-            <div class="career-avatar">
-              <div class="career-avatar-face">
-                Your Pro (FC26 Low-Poly Placeholder)
-              </div>
-              <div class="career-stats" id="careerStats">
-                <!-- Stats injected -->
-              </div>
-              <div class="career-playstyles" id="careerPlaystyles">
-                <!-- Playstyles tags -->
-              </div>
-            </div>
-
-            <div class="career-config">
-              <label for="careerClubSelect">Join Club</label>
-              <select id="careerClubSelect">
-                <option value="FC Barcelona">FC Barcelona</option>
-                <option value="Real Madrid">Real Madrid</option>
-                <option value="Manchester City">Manchester City</option>
-                <option value="Paris Saint-Germain">Paris Saint-Germain</option>
-                <option value="Liverpool">Liverpool</option>
-                <option value="Bayern Munich">Bayern Munich</option>
-              </select>
-
-              <label for="careerPositionSelect">Position</label>
-              <select id="careerPositionSelect">
-                <option value="ST">Striker (ST)</option>
-                <option value="CAM">Attacking Midfielder (CAM)</option>
-                <option value="CM">Central Midfielder (CM)</option>
-                <option value="LW">Left Winger (LW)</option>
-                <option value="RW">Right Winger (RW)</option>
-                <option value="CB">Centre Back (CB)</option>
-                <option value="GK">Goalkeeper (GK)</option>
-              </select>
-
-              <label>Gold Playstyles (Pick up to 3)</label>
-              <select id="careerGoldPlaystyleSelect" multiple size="5">
-                <option value="Trivela">Trivela</option>
-                <option value="Rabona">Rabona</option>
-                <option value="Finesse Shot">Finesse Shot</option>
-                <option value="Power Shot">Power Shot</option>
-                <option value="Pinged Pass">Pinged Pass</option>
-              </select>
-
-              <label>Silver Playstyle (Pick 1)</label>
-              <select id="careerSilverPlaystyleSelect">
-                <option value="">None</option>
-                <option value="Chip Shot">Chip Shot</option>
-                <option value="Lob Pass">Lob Pass</option>
-                <option value="Quick Step">Quick Step</option>
-              </select>
-
-              <button class="btn btn-primary" id="applyCareerPlaystylesBtn">Apply Playstyles</button>
-              <div class="hint">
-                Playstyles boost your stats (shooting, passing, dribbling, physical).  
-                This is a prototype engine—extend it with real animations later.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Pitch Simulation</div>
-            <div class="panel-badge">Skills, shots, passes</div>
-          </div>
-
-          <div class="career-pitch">
-            <div class="career-pitch-inner" id="careerPitch">
-              <!-- Player disc + ball injected -->
-            </div>
-            <div class="match-controls">
-              <button class="btn btn-primary" id="careerActionBtn">Perform Random Action</button>
-              <span>Club: <strong id="careerClubLabel">FC Barcelona</strong></span>
-              <span>Position: <strong id="careerPositionLabel">ST</strong></span>
-            </div>
-            <div class="career-log" id="careerLog"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FANTASY MODE -->
-    <section id="fantasyModeSection" class="hidden">
-      <div class="mode-header">
-        <div>
-          <div class="mode-title">Fantasy Team</div>
-          <div class="mode-subtitle">
-            Build your dream XI with no coin cost. Chemistry and creativity only—like a FUTBin Draft 26 prototype.
-          </div>
-        </div>
-        <div class="coins-display">
-          <span class="coin"></span>
-          <span>Coins not required</span>
-        </div>
-      </div>
-
-      <div class="fantasy-layout">
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Player Pool</div>
-            <div class="panel-badge">Click to assign to slots</div>
-          </div>
-          <div class="cards-grid" id="fantasyPoolGrid"></div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">Fantasy XI & Chemistry</div>
-            <div class="panel-badge">Dream team builder</div>
-          </div>
-
-          <div class="fantasy-panel">
-            <div>Formation: 4-3-3 (Prototype)</div>
-            <div class="fantasy-grid" id="fantasySlotsGrid">
-              <!-- Slots injected -->
-            </div>
-            <div class="fantasy-chem">
-              <div class="chemistry-bar">
-                <div class="chemistry-fill" id="fantasyChemistryFill"></div>
-              </div>
-              <div class="chemistry-label">
-                Fantasy Chemistry: <span id="fantasyChemistryLabel">0</span> / 100  
-                · Links by nation, league, and club.
-              </div>
-            </div>
-          </div>
-
-          <div class="sbc-panel">
-            <div><strong>SBCs (Squad Building Challenges)</strong></div>
-            <div class="sbc-requirements" id="sbcRequirements">
-              Example SBC:  
-              - Min. 3 players from the same nation  
-              - Min. 2 players from the same club  
-              - Overall team rating ≥ 84  
-              Use your fantasy XI to try to meet these conditions.
-            </div>
-            <button class="btn btn-primary" id="checkSbcBtn">Check SBC Completion</button>
-            <div class="chemistry-label" id="sbcResultLabel">SBC Status: Not checked</div>
-          </div>
-
-          <div class="champions-panel">
-            <div><strong>Champions League Mode (Prototype)</strong></div>
-            <div class="champions-fixtures" id="championsFixtures">
-              Sample fixtures:  
-              - FC Barcelona vs Bayern Munich  
-              - Real Madrid vs Manchester City  
-              - Paris Saint-Germain vs Liverpool  
-              Use your fantasy XI as your UCL squad and simulate mentally or extend this engine.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SBC STANDALONE VIEW -->
-    <section id="sbcSection" class="hidden">
-      <div class="mode-header">
-        <div>
-          <div class="mode-title">SBC Hub</div>
-          <div class="mode-subtitle">
-            Central place to view SBC requirements and test squads from Manager or Fantasy modes.
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Global SBCs</div>
-          <div class="panel-badge">Prototype rules</div>
-        </div>
-        <div class="sbc-panel">
-          <div><strong>World Cup Hybrid SBC</strong></div>
-          <div class="sbc-requirements">
-            - Min. 5 nations  
-            - Min. 3 leagues  
-            - Overall rating ≥ 86  
-            Hook this panel to your own squad data structures later.
-          </div>
-        </div>
-        <div class="sbc-panel">
-          <div><strong>Icons & Heroes SBC</strong></div>
-          <div class="sbc-requirements">
-            - At least 1 Icon  
-            - At least 1 Hero  
-            - Chemistry ≥ 80  
-            This file already tracks rarity types—extend the logic to validate these.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- UCL STANDALONE VIEW -->
-    <section id="uclSection" class="hidden">
-      <div class="mode-header">
-        <div>
-          <div class="mode-title">Champions League Mode</div>
-          <div class="mode-subtitle">
-            Knockout-style fixtures, use any squad you’ve built. This is a structural prototype—plug in your own engine.
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Fixture Board</div>
-          <div class="panel-badge">Round of 16</div>
-        </div>
-        <div class="champions-panel">
-          <div><strong>Sample Bracket</strong></div>
-          <div class="champions-fixtures">
-            - FC Barcelona vs Manchester City  
-            - Real Madrid vs Liverpool  
-            - Bayern Munich vs Paris Saint-Germain  
-            - Juventus vs Arsenal  
-            Add your own simulation logic or integrate with the Manager/Fantasy squads.
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </section>
 </main>
 
+<footer>
+  <span>FC26 / FL26‑style browser prototype • Manager, Career, Fantasy, World Cup, UCL, SBC • Ball physics, AI, formations, playstyles.</span>
+</footer>
+
 <script>
-  // -----------------------------
-  // DATA: PLAYERS (50+ VARIETY)
-  // -----------------------------
+  // =========================
+  // CORE DATA: PLAYERS & CARDS
+  // =========================
+
   const players = [
-    // GOLD / META
-    { id: 1, name: "Kylian Mbappé", position: "ST", nation: "France", club: "Paris Saint-Germain", league: "Ligue 1", rarity: "gold", rating: 92, pace: 96, shooting: 92, passing: 84, dribbling: 94, defending: 40, physical: 86, playstylesGold: ["Finesse Shot", "Power Shot", "Quick Step"], playstylesSilver: ["Chip Shot"], price: 18000 },
-    { id: 2, name: "Erling Haaland", position: "ST", nation: "Norway", club: "Manchester City", league: "Premier League", rarity: "gold", rating: 91, pace: 89, shooting: 95, passing: 78, dribbling: 82, defending: 45, physical: 94, playstylesGold: ["Power Shot", "Aerial"], playstylesSilver: ["Hold Up"], price: 17000 },
-    { id: 3, name: "Lionel Messi", position: "RW", nation: "Argentina", club: "Inter Miami", league: "MLS", rarity: "gold", rating: 93, pace: 85, shooting: 93, passing: 95, dribbling: 96, defending: 38, physical: 70, playstylesGold: ["Finesse Shot", "Trivela", "Pinged Pass"], playstylesSilver: ["Chip Shot"], price: 19000 },
-    { id: 4, name: "Kevin De Bruyne", position: "CAM", nation: "Belgium", club: "Manchester City", league: "Premier League", rarity: "gold", rating: 92, pace: 76, shooting: 88, passing: 95, dribbling: 88, defending: 60, physical: 78, playstylesGold: ["Pinged Pass", "Finesse Shot"], playstylesSilver: ["Lob Pass"], price: 16000 },
-    { id: 5, name: "Jude Bellingham", position: "CM", nation: "England", club: "Real Madrid", league: "La Liga", rarity: "gold", rating: 90, pace: 82, shooting: 86, passing: 87, dribbling: 89, defending: 80, physical: 86, playstylesGold: ["Box-to-Box", "Quick Step"], playstylesSilver: ["Lob Pass"], price: 15000 },
-    { id: 6, name: "Vinícius Jr", position: "LW", nation: "Brazil", club: "Real Madrid", league: "La Liga", rarity: "gold", rating: 90, pace: 95, shooting: 86, passing: 82, dribbling: 93, defending: 40, physical: 75, playstylesGold: ["Quick Step", "Flair"], playstylesSilver: ["Chip Shot"], price: 14500 },
-    { id: 7, name: "Mohamed Salah", position: "RW", nation: "Egypt", club: "Liverpool", league: "Premier League", rarity: "gold", rating: 90, pace: 91, shooting: 90, passing: 83, dribbling: 89, defending: 45, physical: 78, playstylesGold: ["Finesse Shot", "Quick Step"], playstylesSilver: ["Chip Shot"], price: 14000 },
-    { id: 8, name: "Harry Kane", position: "ST", nation: "England", club: "Bayern Munich", league: "Bundesliga", rarity: "gold", rating: 90, pace: 74, shooting: 93, passing: 86, dribbling: 82, defending: 45, physical: 84, playstylesGold: ["Finesse Shot", "Hold Up"], playstylesSilver: ["Lob Pass"], price: 13500 },
-    { id: 9, name: "Robert Lewandowski", position: "ST", nation: "Poland", club: "FC Barcelona", league: "La Liga", rarity: "gold", rating: 90, pace: 78, shooting: 93, passing: 80, dribbling: 84, defending: 45, physical: 86, playstylesGold: ["Power Shot", "Aerial"], playstylesSilver: ["Hold Up"], price: 13200 },
-    { id: 10, name: "Neymar Jr", position: "LW", nation: "Brazil", club: "Al Hilal", league: "Saudi Pro League", rarity: "gold", rating: 90, pace: 91, shooting: 87, passing: 88, dribbling: 94, defending: 40, physical: 70, playstylesGold: ["Flair", "Finesse Shot"], playstylesSilver: ["Chip Shot"], price: 13800 },
+    // TOTY / TOTS / Special elite
+    {
+      name: "Kylian Mbappé",
+      club: "Real Madrid",
+      nation: "France",
+      position: "ST",
+      secondPosition: "SS",
+      rating: 97,
+      rarity: "toty",
+      stats: { pace: 98, shooting: 96, passing: 90, dribbling: 97, defending: 45, physical: 90 },
+      playstyles: ["Trivela", "Finesse", "Tiki-Taka", "Pressing"],
+    },
+    {
+      name: "Lionel Messi",
+      club: "Inter Miami",
+      nation: "Argentina",
+      position: "RW",
+      secondPosition: "CAM",
+      rating: 98,
+      rarity: "toty",
+      stats: { pace: 90, shooting: 97, passing: 98, dribbling: 99, defending: 40, physical: 70 },
+      playstyles: ["Playmaker", "Finesse", "Tiki-Taka"],
+    },
+    {
+      name: "Karim Benzema",
+      club: "Al-Ittihad",
+      nation: "France",
+      position: "CF",
+      secondPosition: "ST",
+      rating: 96,
+      rarity: "toty",
+      stats: { pace: 88, shooting: 96, passing: 90, dribbling: 92, defending: 50, physical: 88 },
+      playstyles: ["Finesse", "Header Specialist", "Playmaker"],
+    },
+    {
+      name: "Kevin De Bruyne",
+      club: "Manchester City",
+      nation: "Belgium",
+      position: "CM",
+      secondPosition: "CAM",
+      rating: 97,
+      rarity: "toty",
+      stats: { pace: 82, shooting: 92, passing: 98, dribbling: 93, defending: 70, physical: 82 },
+      playstyles: ["Playmaker", "Trivela", "Tiki-Taka"],
+    },
+    {
+      name: "Luka Modrić",
+      club: "Real Madrid",
+      nation: "Croatia",
+      position: "CM",
+      secondPosition: "CDM",
+      rating: 96,
+      rarity: "toty",
+      stats: { pace: 80, shooting: 88, passing: 96, dribbling: 95, defending: 75, physical: 78 },
+      playstyles: ["Playmaker", "Tiki-Taka"],
+    },
+    {
+      name: "Jude Bellingham",
+      club: "Real Madrid",
+      nation: "England",
+      position: "CM",
+      secondPosition: "CAM",
+      rating: 95,
+      rarity: "toty",
+      stats: { pace: 88, shooting: 90, passing: 92, dribbling: 92, defending: 86, physical: 90 },
+      playstyles: ["Box-to-Box", "Pressing", "Playmaker"],
+    },
+    {
+      name: "Achraf Hakimi",
+      club: "Paris Saint-Germain",
+      nation: "Morocco",
+      position: "RB",
+      secondPosition: "RWB",
+      rating: 94,
+      rarity: "toty",
+      stats: { pace: 96, shooting: 80, passing: 86, dribbling: 88, defending: 88, physical: 90 },
+      playstyles: ["Overlap", "Pressing"],
+    },
+    {
+      name: "Éder Militão",
+      club: "Real Madrid",
+      nation: "Brazil",
+      position: "CB",
+      secondPosition: "RB",
+      rating: 94,
+      rarity: "toty",
+      stats: { pace: 86, shooting: 60, passing: 78, dribbling: 78, defending: 94, physical: 93 },
+      playstyles: ["Defensive Rock", "Header Specialist"],
+    },
+    {
+      name: "Virgil van Dijk",
+      club: "Liverpool",
+      nation: "Netherlands",
+      position: "CB",
+      secondPosition: "SW",
+      rating: 96,
+      rarity: "toty",
+      stats: { pace: 80, shooting: 65, passing: 82, dribbling: 78, defending: 97, physical: 96 },
+      playstyles: ["Defensive Rock", "Header Specialist"],
+    },
+    {
+      name: "Theo Hernández",
+      club: "AC Milan",
+      nation: "France",
+      position: "LB",
+      secondPosition: "LWB",
+      rating: 94,
+      rarity: "toty",
+      stats: { pace: 94, shooting: 80, passing: 84, dribbling: 86, defending: 88, physical: 90 },
+      playstyles: ["Overlap", "Pressing"],
+    },
+    {
+      name: "Thibaut Courtois",
+      club: "Real Madrid",
+      nation: "Belgium",
+      position: "GK",
+      secondPosition: "GK",
+      rating: 96,
+      rarity: "toty",
+      stats: { pace: 60, shooting: 40, passing: 70, dribbling: 60, defending: 98, physical: 90 },
+      playstyles: ["Shot Stopper", "Penalty Saver"],
+    },
 
-    // GOALKEEPERS
-    { id: 11, name: "Thibaut Courtois", position: "GK", nation: "Belgium", club: "Real Madrid", league: "La Liga", rarity: "gold", rating: 90, pace: 50, shooting: 40, passing: 70, dribbling: 60, defending: 20, physical: 85, playstylesGold: ["Shot Stopper"], playstylesSilver: ["Sweeper Keeper"], price: 12000 },
-    { id: 12, name: "Alisson Becker", position: "GK", nation: "Brazil", club: "Liverpool", league: "Premier League", rarity: "gold", rating: 89, pace: 55, shooting: 42, passing: 72, dribbling: 65, defending: 22, physical: 84, playstylesGold: ["Sweeper Keeper"], playstylesSilver: ["Shot Stopper"], price: 11800 },
-    { id: 13, name: "Ederson", position: "GK", nation: "Brazil", club: "Manchester City", league: "Premier League", rarity: "gold", rating: 89, pace: 55, shooting: 45, passing: 80, dribbling: 68, defending: 22, physical: 82, playstylesGold: ["Playmaker GK"], playstylesSilver: ["Sweeper Keeper"], price: 11700 },
+    // Gold meta players
+    {
+      name: "Vinícius Jr.",
+      club: "Real Madrid",
+      nation: "Brazil",
+      position: "LW",
+      secondPosition: "RW",
+      rating: 89,
+      rarity: "gold",
+      stats: { pace: 95, shooting: 84, passing: 80, dribbling: 92, defending: 45, physical: 70 },
+      playstyles: ["Finesse", "Tiki-Taka"],
+    },
+    {
+      name: "Erling Haaland",
+      club: "Manchester City",
+      nation: "Norway",
+      position: "ST",
+      secondPosition: "CF",
+      rating: 91,
+      rarity: "gold",
+      stats: { pace: 89, shooting: 94, passing: 75, dribbling: 80, defending: 50, physical: 94 },
+      playstyles: ["Power Shot", "Header Specialist"],
+    },
+    {
+      name: "Mohamed Salah",
+      club: "Liverpool",
+      nation: "Egypt",
+      position: "RW",
+      secondPosition: "ST",
+      rating: 90,
+      rarity: "gold",
+      stats: { pace: 92, shooting: 90, passing: 82, dribbling: 90, defending: 45, physical: 78 },
+      playstyles: ["Finesse", "Tiki-Taka"],
+    },
+    {
+      name: "Neymar Jr.",
+      club: "Al-Hilal",
+      nation: "Brazil",
+      position: "LW",
+      secondPosition: "CAM",
+      rating: 89,
+      rarity: "gold",
+      stats: { pace: 90, shooting: 86, passing: 88, dribbling: 94, defending: 40, physical: 65 },
+      playstyles: ["Rabona", "Finesse", "Playmaker"],
+    },
+    {
+      name: "Rodri",
+      club: "Manchester City",
+      nation: "Spain",
+      position: "CDM",
+      secondPosition: "CM",
+      rating: 89,
+      rarity: "gold",
+      stats: { pace: 70, shooting: 80, passing: 88, dribbling: 80, defending: 90, physical: 88 },
+      playstyles: ["Defensive Rock", "Playmaker"],
+    },
+    {
+      name: "Pedri",
+      club: "Barcelona",
+      nation: "Spain",
+      position: "CM",
+      secondPosition: "CAM",
+      rating: 88,
+      rarity: "gold",
+      stats: { pace: 82, shooting: 78, passing: 88, dribbling: 90, defending: 70, physical: 75 },
+      playstyles: ["Tiki-Taka", "Playmaker"],
+    },
+    {
+      name: "Gavi",
+      club: "Barcelona",
+      nation: "Spain",
+      position: "CM",
+      secondPosition: "CDM",
+      rating: 86,
+      rarity: "gold",
+      stats: { pace: 80, shooting: 76, passing: 84, dribbling: 86, defending: 80, physical: 82 },
+      playstyles: ["Pressing", "Box-to-Box"],
+    },
+    {
+      name: "Bukayo Saka",
+      club: "Arsenal",
+      nation: "England",
+      position: "RW",
+      secondPosition: "RM",
+      rating: 87,
+      rarity: "gold",
+      stats: { pace: 88, shooting: 82, passing: 84, dribbling: 88, defending: 60, physical: 78 },
+      playstyles: ["Tiki-Taka", "Finesse"],
+    },
+    {
+      name: "Harry Kane",
+      club: "Bayern Munich",
+      nation: "England",
+      position: "ST",
+      secondPosition: "CF",
+      rating: 90,
+      rarity: "gold",
+      stats: { pace: 78, shooting: 93, passing: 86, dribbling: 82, defending: 50, physical: 85 },
+      playstyles: ["Playmaker", "Header Specialist"],
+    },
+    {
+      name: "Rúben Dias",
+      club: "Manchester City",
+      nation: "Portugal",
+      position: "CB",
+      secondPosition: "CB",
+      rating: 88,
+      rarity: "gold",
+      stats: { pace: 72, shooting: 50, passing: 78, dribbling: 70, defending: 90, physical: 88 },
+      playstyles: ["Defensive Rock"],
+    },
+    {
+      name: "Alisson Becker",
+      club: "Liverpool",
+      nation: "Brazil",
+      position: "GK",
+      secondPosition: "GK",
+      rating: 89,
+      rarity: "gold",
+      stats: { pace: 60, shooting: 40, passing: 76, dribbling: 60, defending: 92, physical: 85 },
+      playstyles: ["Shot Stopper"],
+    },
 
-    // DEFENDERS
-    { id: 14, name: "Virgil van Dijk", position: "CB", nation: "Netherlands", club: "Liverpool", league: "Premier League", rarity: "gold", rating: 90, pace: 78, shooting: 60, passing: 78, dribbling: 72, defending: 92, physical: 90, playstylesGold: ["Aerial", "Tackle"], playstylesSilver: ["Hold Line"], price: 14000 },
-    { id: 15, name: "Rúben Dias", position: "CB", nation: "Portugal", club: "Manchester City", league: "Premier League", rarity: "gold", rating: 89, pace: 73, shooting: 55, passing: 76, dribbling: 70, defending: 90, physical: 88, playstylesGold: ["Tackle"], playstylesSilver: ["Hold Line"], price: 13000 },
-    { id: 16, name: "Marquinhos", position: "CB", nation: "Brazil", club: "Paris Saint-Germain", league: "Ligue 1", rarity: "gold", rating: 88, pace: 78, shooting: 55, passing: 76, dribbling: 72, defending: 89, physical: 84, playstylesGold: ["Tackle"], playstylesSilver: ["Hold Line"], price: 12500 },
-    { id: 17, name: "João Cancelo", position: "RB", nation: "Portugal", club: "FC Barcelona", league: "La Liga", rarity: "gold", rating: 87, pace: 86, shooting: 78, passing: 84, dribbling: 86, defending: 80, physical: 78, playstylesGold: ["Pinged Pass", "Quick Step"], playstylesSilver: ["Lob Pass"], price: 12200 },
-    { id: 18, name: "Andrew Robertson", position: "LB", nation: "Scotland", club: "Liverpool", league: "Premier League", rarity: "gold", rating: 86, pace: 84, shooting: 70, passing: 82, dribbling: 80, defending: 84, physical: 82, playstylesGold: ["Quick Step"], playstylesSilver: ["Lob Pass"], price: 11000 },
-
-    // MIDFIELDERS
-    { id: 19, name: "Rodri", position: "CDM", nation: "Spain", club: "Manchester City", league: "Premier League", rarity: "gold", rating: 89, pace: 70, shooting: 78, passing: 86, dribbling: 80, defending: 88, physical: 86, playstylesGold: ["Anchor"], playstylesSilver: ["Hold Line"], price: 13200 },
-    { id: 20, name: "Casemiro", position: "CDM", nation: "Brazil", club: "Manchester United", league: "Premier League", rarity: "gold", rating: 88, pace: 68, shooting: 76, passing: 80, dribbling: 78, defending: 89, physical: 88, playstylesGold: ["Anchor"], playstylesSilver: ["Hold Line"], price: 12500 },
-    { id: 21, name: "Bruno Fernandes", position: "CAM", nation: "Portugal", club: "Manchester United", league: "Premier League", rarity: "gold", rating: 88, pace: 78, shooting: 86, passing: 88, dribbling: 86, defending: 70, physical: 78, playstylesGold: ["Finesse Shot", "Pinged Pass"], playstylesSilver: ["Chip Shot"], price: 12800 },
-    { id: 22, name: "Pedri", position: "CM", nation: "Spain", club: "FC Barcelona", league: "La Liga", rarity: "gold", rating: 87, pace: 80, shooting: 78, passing: 88, dribbling: 90, defending: 72, physical: 76, playstylesGold: ["Quick Step", "Pinged Pass"], playstylesSilver: ["Lob Pass"], price: 12000 },
-    { id: 23, name: "Federico Valverde", position: "CM", nation: "Uruguay", club: "Real Madrid", league: "La Liga", rarity: "gold", rating: 87, pace: 88, shooting: 82, passing: 84, dribbling: 84, defending: 80, physical: 86, playstylesGold: ["Box-to-Box"], playstylesSilver: ["Quick Step"], price: 12100 },
-
-    // WINGERS / ATTACKERS
-    { id: 24, name: "Bukayo Saka", position: "RW", nation: "England", club: "Arsenal", league: "Premier League", rarity: "gold", rating: 86, pace: 88, shooting: 84, passing: 82, dribbling: 88, defending: 60, physical: 78, playstylesGold: ["Quick Step"], playstylesSilver: ["Chip Shot"], price: 11500 },
-    { id: 25, name: "Gabriel Martinelli", position: "LW", nation: "Brazil", club: "Arsenal", league: "Premier League", rarity: "gold", rating: 85, pace: 90, shooting: 82, passing: 78, dribbling: 86, defending: 55, physical: 78, playstylesGold: ["Quick Step"], playstylesSilver: ["Chip Shot"], price: 10800 },
-    { id: 26, name: "Riyad Mahrez", position: "RW", nation: "Algeria", club: "Al Ahli", league: "Saudi Pro League", rarity: "gold", rating: 86, pace: 82, shooting: 84, passing: 84, dribbling: 90, defending: 50, physical: 72, playstylesGold: ["Finesse Shot", "Flair"], playstylesSilver: ["Chip Shot"], price: 11200 },
-    { id: 27, name: "Heung-Min Son", position: "LW", nation: "South Korea", club: "Tottenham Hotspur", league: "Premier League", rarity: "gold", rating: 88, pace: 90, shooting: 88, passing: 82, dribbling: 86, defending: 60, physical: 78, playstylesGold: ["Finesse Shot", "Quick Step"], playstylesSilver: ["Chip Shot"], price: 13000 },
-    { id: 28, name: "Lautaro Martínez", position: "ST", nation: "Argentina", club: "Inter Milan", league: "Serie A", rarity: "gold", rating: 87, pace: 86, shooting: 87, passing: 78, dribbling: 84, defending: 55, physical: 84, playstylesGold: ["Power Shot"], playstylesSilver: ["Hold Up"], price: 11800 },
-
-    // ICONS
-    { id: 29, name: "Ronaldo Nazário", position: "ST", nation: "Brazil", club: "Icons", league: "Icons", rarity: "icon", rating: 95, pace: 96, shooting: 95, passing: 84, dribbling: 95, defending: 45, physical: 86, playstylesGold: ["Finesse Shot", "Power Shot", "Quick Step"], playstylesSilver: ["Chip Shot"], price: 50000 },
-    { id: 30, name: "Zinedine Zidane", position: "CAM", nation: "France", club: "Icons", league: "Icons", rarity: "icon", rating: 94, pace: 80, shooting: 90, passing: 95, dribbling: 94, defending: 70, physical: 82, playstylesGold: ["Pinged Pass", "Finesse Shot"], playstylesSilver: ["Lob Pass"], price: 48000 },
-    { id: 31, name: "Paolo Maldini", position: "CB", nation: "Italy", club: "Icons", league: "Icons", rarity: "icon", rating: 94, pace: 82, shooting: 60, passing: 80, dribbling: 80, defending: 96, physical: 90, playstylesGold: ["Tackle", "Aerial"], playstylesSilver: ["Hold Line"], price: 47000 },
-
-    // HEROES
-    { id: 32, name: "Diego Forlán", position: "ST", nation: "Uruguay", club: "Heroes", league: "La Liga", rarity: "hero", rating: 91, pace: 88, shooting: 93, passing: 82, dribbling: 86, defending: 55, physical: 84, playstylesGold: ["Power Shot"], playstylesSilver: ["Hold Up"], price: 26000 },
-    { id: 33, name: "Yaya Touré", position: "CM", nation: "Ivory Coast", club: "Heroes", league: "Premier League", rarity: "hero", rating: 90, pace: 82, shooting: 86, passing: 86, dribbling: 84, defending: 82, physical: 90, playstylesGold: ["Box-to-Box"], playstylesSilver: ["Hold Line"], price: 25500 },
-    { id: 34, name: "Mario Gómez", position: "ST", nation: "Germany", club: "Heroes", league: "Bundesliga", rarity: "hero", rating: 89, pace: 78, shooting: 92, passing: 78, dribbling: 80, defending: 50, physical: 88, playstylesGold: ["Aerial"], playstylesSilver: ["Hold Up"], price: 24000 },
-
-    // TOTY
-    { id: 35, name: "TOTY Mbappé", position: "ST", nation: "France", club: "Paris Saint-Germain", league: "Ligue 1", rarity: "toty", rating: 97, pace: 99, shooting: 97, passing: 90, dribbling: 98, defending: 45, physical: 92, playstylesGold: ["Finesse Shot", "Power Shot", "Quick Step"], playstylesSilver: ["Chip Shot"], price: 90000 },
-    { id: 36, name: "TOTY Haaland", position: "ST", nation: "Norway", club: "Manchester City", league: "Premier League", rarity: "toty", rating: 96, pace: 93, shooting: 99, passing: 86, dribbling: 88, defending: 50, physical: 96, playstylesGold: ["Power Shot", "Aerial"], playstylesSilver: ["Hold Up"], price: 88000 },
-    { id: 37, name: "TOTY De Bruyne", position: "CAM", nation: "Belgium", club: "Manchester City", league: "Premier League", rarity: "toty", rating: 96, pace: 82, shooting: 92, passing: 98, dribbling: 92, defending: 70, physical: 84, playstylesGold: ["Pinged Pass", "Finesse Shot"], playstylesSilver: ["Lob Pass"], price: 87000 },
-
-    // TOTS
-    { id: 38, name: "TOTS Bellingham", position: "CM", nation: "England", club: "Real Madrid", league: "La Liga", rarity: "tots", rating: 95, pace: 88, shooting: 92, passing: 93, dribbling: 94, defending: 90, physical: 93, playstylesGold: ["Box-to-Box"], playstylesSilver: ["Quick Step"], price: 82000 },
-    { id: 39, name: "TOTS Vinícius Jr", position: "LW", nation: "Brazil", club: "Real Madrid", league: "La Liga", rarity: "tots", rating: 95, pace: 99, shooting: 92, passing: 90, dribbling: 97, defending: 50, physical: 82, playstylesGold: ["Quick Step", "Flair"], playstylesSilver: ["Chip Shot"], price: 81000 },
-    { id: 40, name: "TOTS Rodri", position: "CDM", nation: "Spain", club: "Manchester City", league: "Premier League", rarity: "tots", rating: 94, pace: 78, shooting: 84, passing: 92, dribbling: 88, defending: 94, physical: 92, playstylesGold: ["Anchor"], playstylesSilver: ["Hold Line"], price: 80000 },
-
-    // SPECIALS
-    { id: 41, name: "WC26 Messi", position: "RW", nation: "Argentina", club: "Argentina", league: "National Team", rarity: "special", rating: 96, pace: 88, shooting: 96, passing: 97, dribbling: 98, defending: 45, physical: 78, playstylesGold: ["Trivela", "Finesse Shot", "Pinged Pass"], playstylesSilver: ["Chip Shot"], price: 85000 },
-    { id: 42, name: "WC26 Neymar", position: "LW", nation: "Brazil", club: "Brazil", league: "National Team", rarity: "special", rating: 95, pace: 94, shooting: 92, passing: 94, dribbling: 97, defending: 45, physical: 76, playstylesGold: ["Flair", "Finesse Shot"], playstylesSilver: ["Chip Shot"], price: 83000 },
-    { id: 43, name: "WC26 Cristiano Ronaldo", position: "ST", nation: "Portugal", club: "Portugal", league: "National Team", rarity: "special", rating: 95, pace: 90, shooting: 96, passing: 86, dribbling: 90, defending: 50, physical: 92, playstylesGold: ["Power Shot", "Aerial"], playstylesSilver: ["Chip Shot"], price: 84000 },
-
-    // SILVER / BALANCED
-    { id: 44, name: "Rising Star ST", position: "ST", nation: "Spain", club: "Valencia", league: "La Liga", rarity: "silver", rating: 78, pace: 82, shooting: 78, passing: 70, dribbling: 76, defending: 40, physical: 74, playstylesGold: [], playstylesSilver: [], price: 3500 },
-    { id: 45, name: "Rising Star CM", position: "CM", nation: "France", club: "Lyon", league: "Ligue 1", rarity: "silver", rating: 77, pace: 76, shooting: 72, passing: 78, dribbling: 78, defending: 70, physical: 76, playstylesGold: [], playstylesSilver: [], price: 3400 },
-    { id: 46, name: "Rising Star CB", position: "CB", nation: "Germany", club: "Leverkusen", league: "Bundesliga", rarity: "silver", rating: 76, pace: 74, shooting: 55, passing: 70, dribbling: 70, defending: 80, physical: 80, playstylesGold: [], playstylesSilver: [], price: 3300 },
-    { id: 47, name: "Rising Star LW", position: "LW", nation: "Italy", club: "Napoli", league: "Serie A", rarity: "silver", rating: 78, pace: 84, shooting: 76, passing: 74, dribbling: 80, defending: 50, physical: 72, playstylesGold: [], playstylesSilver: [], price: 3600 },
-    { id: 48, name: "Rising Star GK", position: "GK", nation: "Netherlands", club: "Ajax", league: "Eredivisie", rarity: "silver", rating: 77, pace: 50, shooting: 40, passing: 70, dribbling: 65, defending: 20, physical: 80, playstylesGold: [], playstylesSilver: [], price: 3200 },
-
-    // BRONZE / LOW STATS
-    { id: 49, name: "Academy ST", position: "ST", nation: "USA", club: "Dallas", league: "MLS", rarity: "bronze", rating: 68, pace: 72, shooting: 66, passing: 60, dribbling: 64, defending: 35, physical: 65, playstylesGold: [], playstylesSilver: [], price: 1200 },
-    { id: 50, name: "Academy CM", position: "CM", nation: "Mexico", club: "Monterrey", league: "Liga MX", rarity: "bronze", rating: 67, pace: 70, shooting: 62, passing: 66, dribbling: 66, defending: 60, physical: 64, playstylesGold: [], playstylesSilver: [], price: 1100 },
-    { id: 51, name: "Academy CB", position: "CB", nation: "Japan", club: "Tokyo", league: "J League", rarity: "bronze", rating: 66, pace: 68, shooting: 50, passing: 60, dribbling: 60, defending: 70, physical: 68, playstylesGold: [], playstylesSilver: [], price: 1000 },
-    { id: 52, name: "Academy LW", position: "LW", nation: "Australia", club: "Sydney", league: "A-League", rarity: "bronze", rating: 67, pace: 74, shooting: 64, passing: 62, dribbling: 66, defending: 40, physical: 62, playstylesGold: [], playstylesSilver: [], price: 1050 },
-    { id: 53, name: "Academy GK", position: "GK", nation: "Canada", club: "Toronto", league: "MLS", rarity: "bronze", rating: 66, pace: 48, shooting: 38, passing: 62, dribbling: 60, defending: 20, physical: 70, playstylesGold: [], playstylesSilver: [], price: 950 },
-
-    // EXTRA BALANCE
-    { id: 54, name: "Balanced ST", position: "ST", nation: "Portugal", club: "Porto", league: "Liga Portugal", rarity: "gold", rating: 83, pace: 84, shooting: 83, passing: 76, dribbling: 82, defending: 45, physical: 80, playstylesGold: ["Power Shot"], playstylesSilver: ["Hold Up"], price: 9000 },
-    { id: 55, name: "Balanced CM", position: "CM", nation: "Brazil", club: "Flamengo", league: "Brazilian League", rarity: "gold", rating: 82, pace: 78, shooting: 78, passing: 82, dribbling: 80, defending: 78, physical: 80, playstylesGold: ["Box-to-Box"], playstylesSilver: ["Hold Line"], price: 8800 },
-    { id: 56, name: "Balanced CB", position: "CB", nation: "Spain", club: "Sevilla", league: "La Liga", rarity: "gold", rating: 82, pace: 76, shooting: 55, passing: 76, dribbling: 74, defending: 84, physical: 82, playstylesGold: ["Tackle"], playstylesSilver: ["Hold Line"], price: 8700 },
-    { id: 57, name: "Balanced LW", position: "LW", nation: "Argentina", club: "River Plate", league: "Argentine League", rarity: "gold", rating: 82, pace: 86, shooting: 80, passing: 78, dribbling: 84, defending: 50, physical: 76, playstylesGold: ["Quick Step"], playstylesSilver: ["Chip Shot"], price: 8600 },
-    { id: 58, name: "Balanced GK", position: "GK", nation: "Italy", club: "Roma", league: "Serie A", rarity: "gold", rating: 82, pace: 52, shooting: 42, passing: 74, dribbling: 68, defending: 20, physical: 82, playstylesGold: ["Shot Stopper"], playstylesSilver: ["Sweeper Keeper"], price: 8500 }
+    // Silver / Bronze / special depth
+    {
+      name: "Young Prospect ST",
+      club: "Generic FC",
+      nation: "Spain",
+      position: "ST",
+      secondPosition: "SS",
+      rating: 74,
+      rarity: "silver",
+      stats: { pace: 82, shooting: 76, passing: 68, dribbling: 78, defending: 40, physical: 70 },
+      playstyles: ["Finesse"],
+    },
+    {
+      name: "Defensive Mid Silver",
+      club: "Generic FC",
+      nation: "Germany",
+      position: "CDM",
+      secondPosition: "CM",
+      rating: 73,
+      rarity: "silver",
+      stats: { pace: 68, shooting: 60, passing: 72, dribbling: 70, defending: 78, physical: 76 },
+      playstyles: ["Defensive Rock"],
+    },
+    {
+      name: "Bronze Winger",
+      club: "Academy United",
+      nation: "Brazil",
+      position: "LW",
+      secondPosition: "RW",
+      rating: 65,
+      rarity: "bronze",
+      stats: { pace: 80, shooting: 60, passing: 60, dribbling: 70, defending: 40, physical: 60 },
+      playstyles: [],
+    },
+    {
+      name: "Bronze CB",
+      club: "Academy United",
+      nation: "England",
+      position: "CB",
+      secondPosition: "CB",
+      rating: 64,
+      rarity: "bronze",
+      stats: { pace: 60, shooting: 40, passing: 55, dribbling: 50, defending: 68, physical: 70 },
+      playstyles: [],
+    },
+    {
+      name: "Special Flair CAM",
+      club: "Street XI",
+      nation: "France",
+      position: "CAM",
+      secondPosition: "CF",
+      rating: 86,
+      rarity: "special",
+      stats: { pace: 84, shooting: 84, passing: 90, dribbling: 92, defending: 55, physical: 75 },
+      playstyles: ["Rabona", "Trivela", "Playmaker"],
+    },
+    {
+      name: "Special Power ST",
+      club: "Street XI",
+      nation: "Italy",
+      position: "ST",
+      secondPosition: "CF",
+      rating: 87,
+      rarity: "special",
+      stats: { pace: 86, shooting: 90, passing: 78, dribbling: 82, defending: 50, physical: 90 },
+      playstyles: ["Power Shot", "Header Specialist"],
+    },
   ];
 
-  // -----------------------------
-  // UTILS
-  // -----------------------------
-  function rarityClass(rarity) {
-    switch (rarity) {
-      case "gold": return "rarity-gold";
-      case "toty": return "rarity-toty";
-      case "tots": return "rarity-tots";
-      case "special": return "rarity-special";
-      case "icon": return "rarity-icon";
-      case "hero": return "rarity-hero";
-      case "silver": return "rarity-silver";
-      case "bronze": return "rarity-bronze";
-      default: return "rarity-gold";
-    }
-  }
+  // =========================
+  // UI: CARD RENDERING
+  // =========================
 
-  function rarityLabel(rarity) {
-    switch (rarity) {
-      case "gold": return "Gold";
-      case "toty": return "TOTY";
-      case "tots": return "TOTS";
-      case "special": return "Special";
-      case "icon": return "Icon";
-      case "hero": return "Hero";
-      case "silver": return "Silver";
-      case "bronze": return "Bronze";
-      default: return "Gold";
-    }
-  }
+  const cardGrid = document.getElementById("cardGrid");
 
-  function createPlayerCard(player) {
-    const card = document.createElement("div");
-    card.className = "player-card";
-    card.dataset.playerId = player.id;
+  function renderCards(filterRarity = null) {
+    cardGrid.innerHTML = "";
+    players
+      .filter(p => !filterRarity || p.rarity === filterRarity)
+      .forEach(player => {
+        const card = document.createElement("div");
+        card.className = "player-card " + player.rarity;
+        card.dataset.name = player.name;
 
-    const rarity = document.createElement("div");
-    rarity.className = "card-rarity " + rarityClass(player.rarity);
-    rarity.textContent = rarityLabel(player.rarity);
-    card.appendChild(rarity);
+        const header = document.createElement("div");
+        header.className = "card-header";
 
-    const face = document.createElement("div");
-    face.className = "player-face";
-    face.textContent = player.name;
-    card.appendChild(face);
+        const rating = document.createElement("div");
+        rating.className = "card-rating";
+        rating.textContent = player.rating;
 
-    const name = document.createElement("div");
-    name.className = "player-name";
-    name.textContent = player.name;
-    card.appendChild(name);
+        const pos = document.createElement("div");
+        pos.className = "card-position";
+        pos.textContent = player.position + (player.secondPosition ? " / " + player.secondPosition : "");
 
-    const meta = document.createElement("div");
-    meta.className = "player-meta";
-    meta.innerHTML = `<span>${player.position} · ${player.nation}</span><span>${player.club}</span>`;
-    card.appendChild(meta);
+        header.appendChild(rating);
+        header.appendChild(pos);
 
-    const stats = document.createElement("div");
-    stats.className = "player-stats";
-    stats.innerHTML = `
-      <div class="stat-pill"><span>PAC</span><span class="value">${player.pace}</span></div>
-      <div class="stat-pill"><span>SHO</span><span class="value">${player.shooting}</span></div>
-      <div class="stat-pill"><span>PAS</span><span class="value">${player.passing}</span></div>
-      <div class="stat-pill"><span>DRI</span><span class="value">${player.dribbling}</span></div>
-      <div class="stat-pill"><span>DEF</span><span class="value">${player.defending}</span></div>
-      <div class="stat-pill"><span>PHY</span><span class="value">${player.physical}</span></div>
-    `;
-    card.appendChild(stats);
+        const nameEl = document.createElement("div");
+        nameEl.className = "card-name";
+        nameEl.textContent = player.name;
 
-    const playstylesRow = document.createElement("div");
-    playstylesRow.className = "playstyles-row";
-    player.playstylesGold.forEach(ps => {
-      const tag = document.createElement("div");
-      tag.className = "playstyle-tag gold";
-      tag.textContent = ps;
-      playstylesRow.appendChild(tag);
-    });
-    player.playstylesSilver.forEach(ps => {
-      const tag = document.createElement("div");
-      tag.className = "playstyle-tag silver";
-      tag.textContent = ps;
-      playstylesRow.appendChild(tag);
-    });
-    card.appendChild(playstylesRow);
+        const face = document.createElement("div");
+        face.className = "card-face";
 
-    return card;
-  }
+        const stats = document.createElement("div");
+        stats.className = "card-stats";
+        const statEntries = [
+          ["PAC", player.stats.pace],
+          ["SHO", player.stats.shooting],
+          ["PAS", player.stats.passing],
+          ["DRI", player.stats.dribbling],
+          ["DEF", player.stats.defending],
+          ["PHY", player.stats.physical],
+        ];
+        statEntries.forEach(([label, value]) => {
+          const s = document.createElement("div");
+          s.className = "card-stat";
+          s.innerHTML = `<span>${label}</span><span>${value}</span>`;
+          stats.appendChild(s);
+        });
 
-  // -----------------------------
-  // MANAGER MODE
-  // -----------------------------
-  let managerCoins = 50000;
-  let managerRoster = [];
-  const managerCoinsEl = document.getElementById("managerCoins");
-  const marketGridEl = document.getElementById("marketGrid");
-  const managerRosterListEl = document.getElementById("managerRosterList");
-  const managerChemistryFillEl = document.getElementById("managerChemistryFill");
-  const managerChemistryLabelEl = document.getElementById("managerChemistryLabel");
-  const matchLogEl = document.getElementById("matchLog");
-  const matchResultLabelEl = document.getElementById("matchResultLabel");
-  const opponentClubLabelEl = document.getElementById("opponentClubLabel");
-  const pitchEl = document.getElementById("pitch");
+        const tags = document.createElement("div");
+        tags.className = "card-tags";
 
-  function renderMarket() {
-    marketGridEl.innerHTML = "";
-    players.forEach(player => {
-      const card = createPlayerCard(player);
-      card.addEventListener("click", () => trySignPlayer(player));
-      marketGridEl.appendChild(card);
-    });
-  }
+        const rarityTag = document.createElement("span");
+        rarityTag.className = "tag-pill rare";
+        rarityTag.textContent = player.rarity.toUpperCase();
+        tags.appendChild(rarityTag);
 
-  function trySignPlayer(player) {
-    if (managerRoster.find(p => p.id === player.id)) {
-      addLog(`Already signed ${player.name}.`);
-      return;
-    }
-    if (managerCoins < player.price) {
-      addLog(`Not enough FUTCoins to sign ${player.name}. Need ${player.price}.`, true);
-      return;
-    }
-    managerCoins -= player.price;
-    managerRoster.push(player);
-    managerCoinsEl.textContent = managerCoins;
-    renderRoster();
-    addLog(`Signed ${player.name} for ${player.price} FUTCoins.`);
-  }
+        player.playstyles.slice(0, 3).forEach(ps => {
+          const t = document.createElement("span");
+          t.className = "tag-pill playstyle";
+          t.textContent = ps;
+          tags.appendChild(t);
+        });
 
-  function renderRoster() {
-    managerRosterListEl.innerHTML = "";
-    managerRoster.forEach(player => {
-      const item = document.createElement("div");
-      item.className = "roster-item";
-      item.innerHTML = `
-        <span>${player.name} (${player.position})</span>
-        <span>Rating ${player.rating}</span>
-      `;
-      managerRosterListEl.appendChild(item);
-    });
-    updateManagerChemistry();
-  }
+        card.appendChild(header);
+        card.appendChild(nameEl);
+        card.appendChild(face);
+        card.appendChild(stats);
+        card.appendChild(tags);
 
-  function updateManagerChemistry() {
-    if (managerRoster.length === 0) {
-      managerChemistryFillEl.style.width = "0%";
-      managerChemistryLabelEl.textContent = "0";
-      return;
-    }
-    let base = 40;
-    const positions = managerRoster.map(p => p.position);
-    const uniquePositions = new Set(positions);
-    base += uniquePositions.size * 5;
+        card.addEventListener("click", () => {
+          selectPlayerForSquad(player);
+        });
 
-    const nations = managerRoster.map(p => p.nation);
-    const clubs = managerRoster.map(p => p.club);
-    const leagues = managerRoster.map(p => p.league);
-
-    function bonusFrom(arr) {
-      const counts = {};
-      arr.forEach(v => counts[v] = (counts[v] || 0) + 1);
-      let bonus = 0;
-      Object.values(counts).forEach(c => {
-        if (c >= 2) bonus += (c - 1) * 3;
+        cardGrid.appendChild(card);
       });
-      return bonus;
-    }
-
-    base += bonusFrom(nations);
-    base += bonusFrom(clubs);
-    base += bonusFrom(leagues);
-
-    const chemistry = Math.min(100, base);
-    managerChemistryFillEl.style.width = chemistry + "%";
-    managerChemistryLabelEl.textContent = chemistry.toString();
   }
 
-  function addLog(text, danger = false) {
-    const line = document.createElement("div");
-    line.className = "log-line";
-    line.innerHTML = danger ? `<strong>[!] ${text}</strong>` : text;
-    matchLogEl.appendChild(line);
-    matchLogEl.scrollTop = matchLogEl.scrollHeight;
-  }
+  renderCards(); // initial
 
-  function clearPitch() {
-    pitchEl.querySelectorAll(".disc, .disc-label, .ball").forEach(el => el.remove());
-  }
+  // =========================
+  // MODE SWITCHING
+  // =========================
 
-  function renderPitch() {
-    clearPitch();
-    const maxPlayers = Math.min(managerRoster.length, 11);
-    const width = pitchEl.clientWidth || 260;
-    const height = pitchEl.clientHeight || 160;
+  const modeButtons = document.querySelectorAll(".mode-btn");
+  const hudModeTag = document.getElementById("hudModeTag");
 
-    for (let i = 0; i < maxPlayers; i++) {
-      const player = managerRoster[i];
-      const disc = document.createElement("div");
-      disc.className = "disc";
-      const label = document.createElement("div");
-      label.className = "disc-label";
-      label.textContent = player.position;
+  let currentMode = "manager";
 
-      const x = (i % 4) / 3;
-      const y = Math.floor(i / 4) / 3;
-
-      disc.style.left = (20 + x * (width - 40)) + "px";
-      disc.style.top = (30 + y * (height - 60)) + "px";
-      label.style.left = disc.style.left;
-      label.style.top = (parseFloat(disc.style.top) + 18) + "px";
-
-      pitchEl.appendChild(disc);
-      pitchEl.appendChild(label);
-    }
-
-    // Opponent discs (simple line)
-    for (let i = 0; i < maxPlayers; i++) {
-      const disc = document.createElement("div");
-      disc.className = "disc opponent";
-      const label = document.createElement("div");
-      label.className = "disc-label";
-      label.textContent = "OP";
-
-      const x = (i % 4) / 3;
-      const y = Math.floor(i / 4) / 3;
-
-      disc.style.left = (20 + x * (width - 40)) + "px";
-      disc.style.top = (height - 40 - y * (height - 60)) + "px";
-      label.style.left = disc.style.left;
-      label.style.top = (parseFloat(disc.style.top) + 18) + "px";
-
-      pitchEl.appendChild(disc);
-      pitchEl.appendChild(label);
-    }
-
-    const ball = document.createElement("div");
-    ball.className = "ball";
-    ball.style.left = (width / 2 - 5) + "px";
-    ball.style.top = (height / 2 - 5) + "px";
-    pitchEl.appendChild(ball);
-  }
-
-  function simulateMatch() {
-    if (managerRoster.length === 0) {
-      addLog("You need at least one player in your roster to simulate a match.", true);
-      matchResultLabelEl.textContent = "No squad";
-      return;
-    }
-
-    renderPitch();
-
-    const teamRating = managerRoster.reduce((sum, p) => sum + p.rating, 0) / managerRoster.length;
-    const chemistry = parseInt(managerChemistryLabelEl.textContent, 10) || 0;
-    const teamStrength = teamRating + chemistry / 2;
-
-    const opponentStrength = 88 + Math.random() * 12; // simple prototype
-
-    const randomFactor = (Math.random() - 0.5) * 10;
-    const finalTeam = teamStrength + randomFactor;
-    const finalOpponent = opponentStrength - randomFactor;
-
-    let result;
-    if (finalTeam > finalOpponent + 2) result = "Win";
-    else if (finalOpponent > finalTeam + 2) result = "Loss";
-    else result = "Draw";
-
-    matchResultLabelEl.textContent = result;
-
-    addLog(`Kick-off vs ${opponentClubLabelEl.textContent}.`);
-    addLog(`Your team strength: ${teamStrength.toFixed(1)} · Opponent strength: ${opponentStrength.toFixed(1)}.`);
-
-    const actions = ["short pass", "lob pass", "chip shot", "finesse shot", "power shot", "tackle", "clearance"];
-    for (let i = 0; i < 6; i++) {
-      const player = managerRoster[Math.floor(Math.random() * managerRoster.length)];
-      const action = actions[Math.floor(Math.random() * actions.length)];
-      addLog(`${player.name} performs a ${action}.`);
-    }
-
-    addLog(`Full-time result: ${result}.`);
-  }
-
-  document.getElementById("simulateMatchBtn").addEventListener("click", simulateMatch);
-
-  // Manager tabs
-  const managerTabs = document.querySelectorAll("[data-manager-tab]");
-  const managerRosterTabEl = document.getElementById("managerRosterTab");
-  const managerStadiumTabEl = document.getElementById("managerStadiumTab");
-  const managerLogTabEl = document.getElementById("managerLogTab");
-
-  managerTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      managerTabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      const target = tab.dataset.managerTab;
-      managerRosterTabEl.classList.toggle("hidden", target !== "roster");
-      managerStadiumTabEl.classList.toggle("hidden", target !== "stadium");
-      managerLogTabEl.classList.toggle("hidden", target !== "log");
-      if (target === "stadium") renderPitch();
+  modeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      modeButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentMode = btn.dataset.mode;
+      updateModeHUD();
     });
   });
 
-  // -----------------------------
-  // CAREER MODE
-  // -----------------------------
-  const careerStatsEl = document.getElementById("careerStats");
-  const careerPlaystylesEl = document.getElementById("careerPlaystyles");
-  const careerClubSelectEl = document.getElementById("careerClubSelect");
-  const careerPositionSelectEl = document.getElementById("careerPositionSelect");
-  const careerGoldPlaystyleSelectEl = document.getElementById("careerGoldPlaystyleSelect");
-  const careerSilverPlaystyleSelectEl = document.getElementById("careerSilverPlaystyleSelect");
-  const applyCareerPlaystylesBtn = document.getElementById("applyCareerPlaystylesBtn");
-  const careerPlaystyleCountEl = document.getElementById("careerPlaystyleCount");
-  const careerPitchEl = document.getElementById("careerPitch");
-  const careerActionBtn = document.getElementById("careerActionBtn");
-  const careerLogEl = document.getElementById("careerLog");
-  const careerClubLabelEl = document.getElementById("careerClubLabel");
-  const careerPositionLabelEl = document.getElementById("careerPositionLabel");
+  function updateModeHUD() {
+    if (currentMode === "manager") hudModeTag.textContent = "Manager Sim";
+    else if (currentMode === "career") hudModeTag.textContent = "Career Mode";
+    else if (currentMode === "fantasy") hudModeTag.textContent = "Fantasy Team";
+    else if (currentMode === "worldcup") hudModeTag.textContent = "World Cup";
+    else if (currentMode === "ucl") hudModeTag.textContent = "Champions League";
+    else if (currentMode === "sbc") hudModeTag.textContent = "SBC Hub";
+  }
 
-  let careerPlayer = {
-    shooting: 80,
-    passing: 80,
-    dribbling: 80,
-    physical: 80,
-    playstylesGold: [],
-    playstylesSilver: null
+  // =========================
+  // SUB FILTERS (RARITY)
+  // =========================
+
+  const subChips = document.querySelectorAll(".sub-chip");
+
+  subChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      subChips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      const sub = chip.dataset.sub;
+      if (sub === "toty") renderCards("toty");
+      else if (sub === "tots") renderCards("tots");
+      else if (sub === "special") renderCards("special");
+      else if (sub === "gold") renderCards("gold");
+      else if (sub === "silver") renderCards("silver");
+      else if (sub === "bronze") renderCards("bronze");
+      else renderCards();
+    });
+  });
+
+  // =========================
+  // FORMATIONS
+  // =========================
+
+  const formationSelect = document.getElementById("formationSelect");
+  let currentFormation = "4-3-3";
+
+  formationSelect.querySelectorAll(".formation-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      formationSelect.querySelectorAll(".formation-chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      currentFormation = chip.dataset.formation;
+      layoutPlayers();
+    });
+  });
+
+  // =========================
+  // SQUAD & PLAYER SELECTION
+  // =========================
+
+  const squadInfo = document.getElementById("squadInfo");
+  let coins = 50000;
+  let squad = [];
+
+  function updateCoinsDisplay() {
+    document.getElementById("coinsDisplay").textContent = coins.toLocaleString();
+  }
+
+  function selectPlayerForSquad(player) {
+    if (currentMode === "manager" || currentMode === "fantasy") {
+      if (currentMode === "manager") {
+        const cost = Math.round(player.rating * 120);
+        if (coins < cost) {
+          alert("Not enough FUTCoins to sign " + player.name + ". Cost: " + cost);
+          return;
+        }
+        coins -= cost;
+        updateCoinsDisplay();
+      }
+      squad.push(player);
+      updateSquadInfo();
+      layoutPlayers();
+    } else if (currentMode === "career") {
+      // In career mode, selecting a player sets them as the controlled player
+      controlledPlayer = player;
+      updateSquadInfo();
+    }
+  }
+
+  function updateSquadInfo() {
+    squadInfo.innerHTML = "";
+    const title = document.createElement("div");
+    title.className = "info-line";
+    title.innerHTML = "<strong>Current Squad (" + currentMode + "):</strong>";
+    squadInfo.appendChild(title);
+
+    if (squad.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "info-line";
+      empty.textContent = "No players yet. Click cards to add players.";
+      squadInfo.appendChild(empty);
+      return;
+    }
+
+    squad.forEach(p => {
+      const line = document.createElement("div");
+      line.className = "info-line";
+      line.textContent =
+        p.name +
+        " • " +
+        p.position +
+        (p.secondPosition ? "/" + p.secondPosition : "") +
+        " • " +
+        p.club +
+        " • " +
+        p.nation +
+        " • Rating " +
+        p.rating;
+      squadInfo.appendChild(line);
+    });
+  }
+
+  // =========================
+  // MATCH SIMULATION (2.5D)
+  // =========================
+
+  const playersLayer = document.getElementById("playersLayer");
+  const ballEl = document.getElementById("ball");
+  const hudScore = document.getElementById("hudScore");
+  const hudTime = document.getElementById("hudTime");
+
+  let homePlayers = [];
+  let awayPlayers = [];
+  let matchRunning = false;
+  let matchTime = 0; // seconds
+  let matchInterval = null;
+
+  let ballState = {
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    owner: null,
   };
 
-  function renderCareerStats() {
-    careerStatsEl.innerHTML = `
-      <div>SHO: <strong>${careerPlayer.shooting}</strong></div>
-      <div>PAS: <strong>${careerPlayer.passing}</strong></div>
-      <div>DRI: <strong>${careerPlayer.dribbling}</strong></div>
-      <div>PHY: <strong>${careerPlayer.physical}</strong></div>
-    `;
+  let controlledPlayer = null; // for career mode
+
+  function createDisc(player, team, index, total) {
+    const disc = document.createElement("div");
+    disc.className = "player-disc " + team;
+    const span = document.createElement("span");
+    span.textContent = player.position;
+    disc.appendChild(span);
+
+    disc.dataset.team = team;
+    disc.dataset.name = player.name;
+
+    disc.style.left = "50%";
+    disc.style.top = "50%";
+
+    playersLayer.appendChild(disc);
+    return disc;
   }
 
-  function renderCareerPlaystyles() {
-    careerPlaystylesEl.innerHTML = "";
-    careerPlayer.playstylesGold.forEach(ps => {
-      const tag = document.createElement("div");
-      tag.className = "playstyle-tag gold";
-      tag.textContent = ps;
-      careerPlaystylesEl.appendChild(tag);
-    });
-    if (careerPlayer.playstylesSilver) {
-      const tag = document.createElement("div");
-      tag.className = "playstyle-tag silver";
-      tag.textContent = careerPlayer.playstylesSilver;
-      careerPlaystylesEl.appendChild(tag);
-    }
-    const count = careerPlayer.playstylesGold.length + (careerPlayer.playstylesSilver ? 1 : 0);
-    careerPlaystyleCountEl.textContent = `${count} / 4`;
-  }
+  function layoutPlayers() {
+    playersLayer.innerHTML = "";
 
-  function applyCareerPlaystyles() {
-    const selectedGold = Array.from(careerGoldPlaystyleSelectEl.selectedOptions).map(o => o.value);
-    if (selectedGold.length > 3) {
-      careerLogEl.innerHTML += `<div class="log-line"><strong>[!] Max 3 gold playstyles.</strong></div>`;
-      careerGoldPlaystyleSelectEl.value = "";
-      return;
-    }
-    const selectedSilver = careerSilverPlaystyleSelectEl.value || null;
-
-    careerPlayer.playstylesGold = selectedGold;
-    careerPlayer.playstylesSilver = selectedSilver;
-
-    // Reset base stats
-    careerPlayer.shooting = 80;
-    careerPlayer.passing = 80;
-    careerPlayer.dribbling = 80;
-    careerPlayer.physical = 80;
-
-    selectedGold.forEach(ps => {
-      switch (ps) {
-        case "Trivela":
-          careerPlayer.shooting += 6;
-          careerPlayer.passing += 4;
-          break;
-        case "Rabona":
-          careerPlayer.dribbling += 6;
-          careerPlayer.shooting += 3;
-          break;
-        case "Finesse Shot":
-          careerPlayer.shooting += 8;
-          break;
-        case "Power Shot":
-          careerPlayer.shooting += 10;
-          careerPlayer.physical += 4;
-          break;
-        case "Pinged Pass":
-          careerPlayer.passing += 10;
-          break;
-        case "Box-to-Box":
-          careerPlayer.passing += 4;
-          careerPlayer.dribbling += 4;
-          careerPlayer.physical += 4;
-          break;
-        case "Quick Step":
-          careerPlayer.dribbling += 8;
-          break;
-      }
-    });
-
-    if (selectedSilver) {
-      switch (selectedSilver) {
-        case "Chip Shot":
-          careerPlayer.shooting += 3;
-          break;
-        case "Lob Pass":
-          careerPlayer.passing += 3;
-          break;
-        case "Quick Step":
-          careerPlayer.dribbling += 3;
-          break;
+    // Basic layout: use squad for home, generate generic AI for away
+    homePlayers = squad.slice(0, 11);
+    if (homePlayers.length < 11) {
+      // fill with generic players
+      while (homePlayers.length < 11) {
+        homePlayers.push({
+          name: "Home Player " + (homePlayers.length + 1),
+          position: "CM",
+          secondPosition: "",
+          rating: 80,
+          rarity: "gold",
+          stats: { pace: 80, shooting: 80, passing: 80, dribbling: 80, defending: 80, physical: 80 },
+          playstyles: ["Tiki-Taka"],
+        });
       }
     }
 
-    renderCareerStats();
-    renderCareerPlaystyles();
-    careerLogEl.innerHTML += `<div class="log-line">Playstyles applied. Stats boosted.</div>`;
-    careerLogEl.scrollTop = careerLogEl.scrollHeight;
-  }
-
-  applyCareerPlaystylesBtn.addEventListener("click", applyCareerPlaystyles);
-
-  function renderCareerPitch() {
-    careerPitchEl.innerHTML = "";
-    const width = careerPitchEl.clientWidth || 260;
-    const height = careerPitchEl.clientHeight || 220;
-
-    const playerDisc = document.createElement("div");
-    playerDisc.className = "career-player-disc";
-    playerDisc.style.left = (width / 2 - 10) + "px";
-    playerDisc.style.top = (height / 2 - 10) + "px";
-    playerDisc.textContent = "YOU";
-    careerPitchEl.appendChild(playerDisc);
-
-    const ball = document.createElement("div");
-    ball.className = "career-ball";
-    ball.style.left = (width / 2 + 20) + "px";
-    ball.style.top = (height / 2) + "px";
-    careerPitchEl.appendChild(ball);
-  }
-
-  function performCareerAction() {
-    const actions = [
-      "Trivela shot from outside the box",
-      "Rabona cross into the area",
-      "Finesse shot into the top corner",
-      "Power shot from long range",
-      "Pinged pass splitting the defence",
-      "Chip shot over the goalkeeper",
-      "Lob pass to the winger",
-      "Quick step dribble past two defenders"
-    ];
-    const action = actions[Math.floor(Math.random() * actions.length)];
-
-    const successChance =
-      (careerPlayer.shooting + careerPlayer.passing + careerPlayer.dribbling + careerPlayer.physical) / 4 +
-      Math.random() * 10;
-
-    const threshold = 82;
-    const success = successChance >= threshold;
-
-    const club = careerClubSelectEl.value;
-    const position = careerPositionSelectEl.value;
-    careerClubLabelEl.textContent = club;
-    careerPositionLabelEl.textContent = position;
-
-    const resultText = success
-      ? `Successful ${action} for ${club} as ${position}.`
-      : `Failed ${action} for ${club} as ${position}.`;
-
-    careerLogEl.innerHTML += `<div class="log-line">${resultText}</div>`;
-    careerLogEl.scrollTop = careerLogEl.scrollHeight;
-  }
-
-  careerActionBtn.addEventListener("click", performCareerAction);
-
-  renderCareerStats();
-  renderCareerPlaystyles();
-  renderCareerPitch();
-
-  // -----------------------------
-  // FANTASY MODE
-  // -----------------------------
-  const fantasyPoolGridEl = document.getElementById("fantasyPoolGrid");
-  const fantasySlotsGridEl = document.getElementById("fantasySlotsGrid");
-  const fantasyChemistryFillEl = document.getElementById("fantasyChemistryFill");
-  const fantasyChemistryLabelEl = document.getElementById("fantasyChemistryLabel");
-  const checkSbcBtn = document.getElementById("checkSbcBtn");
-  const sbcResultLabelEl = document.getElementById("sbcResultLabel");
-
-  const fantasySlots = [
-    { id: "GK", label: "GK" },
-    { id: "LB", label: "LB" },
-    { id: "CB1", label: "CB" },
-    { id: "CB2", label: "CB" },
-    { id: "RB", label: "RB" },
-    { id: "CM1", label: "CM" },
-    { id: "CM2", label: "CM" },
-    { id: "CAM", label: "CAM" },
-    { id: "LW", label: "LW" },
-    { id: "ST", label: "ST" },
-    { id: "RW", label: "RW" }
-  ];
-
-  const fantasySquad = {};
-
-  function renderFantasyPool() {
-    fantasyPoolGridEl.innerHTML = "";
-    players.forEach(player => {
-      const card = createPlayerCard(player);
-      card.addEventListener("click", () => assignFantasyPlayer(player));
-      fantasyPoolGridEl.appendChild(card);
-    });
-  }
-
-  function renderFantasySlots() {
-    fantasySlotsGridEl.innerHTML = "";
-    fantasySlots.forEach(slot => {
-      const slotEl = document.createElement("div");
-      slotEl.className = "fantasy-slot";
-      slotEl.dataset.slotId = slot.id;
-      const assigned = fantasySquad[slot.id];
-      if (assigned) {
-        slotEl.classList.add("filled");
-        slotEl.textContent = `${slot.label}: ${assigned.name}`;
-      } else {
-        slotEl.textContent = slot.label;
-      }
-      fantasySlotsGridEl.appendChild(slotEl);
-    });
-    updateFantasyChemistry();
-  }
-
-  function assignFantasyPlayer(player) {
-    // Find first slot matching position
-    const slot = fantasySlots.find(s => {
-      if (player.position === "CB" && s.label === "CB") return true;
-      if (player.position === "CM" && (s.label === "CM" || s.label === "CAM")) return true;
-      if (player.position === "CAM" && s.label === "CAM") return true;
-      if (player.position === "LW" && s.label === "LW") return true;
-      if (player.position === "RW" && s.label === "RW") return true;
-      if (player.position === "ST" && s.label === "ST") return true;
-      if (player.position === "LB" && s.label === "LB") return true;
-      if (player.position === "RB" && s.label === "RB") return true;
-      if (player.position === "GK" && s.label === "GK") return true;
-      return false;
-    });
-
-    if (!slot) {
-      sbcResultLabelEl.textContent = `No suitable slot for ${player.name}.`;
-      return;
-    }
-
-    fantasySquad[slot.id] = player;
-    renderFantasySlots();
-  }
-
-  function updateFantasyChemistry() {
-    const squadPlayers = Object.values(fantasySquad);
-    if (squadPlayers.length === 0) {
-      fantasyChemistryFillEl.style.width = "0%";
-      fantasyChemistryLabelEl.textContent = "0";
-      return;
-    }
-
-    let base = 40;
-
-    const nations = squadPlayers.map(p => p.nation);
-    const clubs = squadPlayers.map(p => p.club);
-    const leagues = squadPlayers.map(p => p.league);
-
-    function bonusFrom(arr) {
-      const counts = {};
-      arr.forEach(v => counts[v] = (counts[v] || 0) + 1);
-      let bonus = 0;
-      Object.values(counts).forEach(c => {
-        if (c >= 2) bonus += (c - 1) * 4;
+    awayPlayers = [];
+    for (let i = 0; i < 11; i++) {
+      awayPlayers.push({
+        name: "Opponent " + (i + 1),
+        position: "CM",
+        secondPosition: "",
+        rating: 82,
+        rarity: "gold",
+        stats: { pace: 78, shooting: 78, passing: 80, dribbling: 78, defending: 80, physical: 82 },
+        playstyles: ["Pressing"],
       });
-      return bonus;
     }
 
-    base += bonusFrom(nations);
-    base += bonusFrom(clubs);
-    base += bonusFrom(leagues);
+    const pitchRect = document.querySelector(".pitch").getBoundingClientRect();
+    const centerX = pitchRect.width / 2;
+    const centerY = pitchRect.height / 2;
 
-    const chemistry = Math.min(100, base);
-    fantasyChemistryFillEl.style.width = chemistry + "%";
-    fantasyChemistryLabelEl.textContent = chemistry.toString();
+    function placeTeam(teamPlayers, teamSide) {
+      const discs = [];
+      const formation = currentFormation;
+
+      // Simple formation mapping: rows & columns
+      const rows = [];
+      if (formation === "4-3-3") {
+        rows.push({ count: 4, depth: 0.2 }); // defenders
+        rows.push({ count: 3, depth: 0.5 }); // mids
+        rows.push({ count: 3, depth: 0.75 }); // forwards
+        rows.push({ count: 1, depth: 0.05 }); // GK
+      } else if (formation === "4-4-2") {
+        rows.push({ count: 4, depth: 0.2 });
+        rows.push({ count: 4, depth: 0.5 });
+        rows.push({ count: 2, depth: 0.75 });
+        rows.push({ count: 1, depth: 0.05 });
+      } else if (formation === "4-2-3-1") {
+        rows.push({ count: 4, depth: 0.2 });
+        rows.push({ count: 2, depth: 0.4 });
+        rows.push({ count: 3, depth: 0.6 });
+        rows.push({ count: 1, depth: 0.8 });
+        rows.push({ count: 1, depth: 0.05 });
+      } else if (formation === "3-5-2") {
+        rows.push({ count: 3, depth: 0.2 });
+        rows.push({ count: 5, depth: 0.5 });
+        rows.push({ count: 2, depth: 0.75 });
+        rows.push({ count: 1, depth: 0.05 });
+      } else if (formation === "4-1-2-1-2") {
+        rows.push({ count: 4, depth: 0.2 });
+        rows.push({ count: 1, depth: 0.4 });
+        rows.push({ count: 2, depth: 0.55 });
+        rows.push({ count: 1, depth: 0.7 });
+        rows.push({ count: 2, depth: 0.8 });
+        rows.push({ count: 1, depth: 0.05 });
+      }
+
+      let idx = 0;
+      rows.forEach(row => {
+        const spacing = pitchRect.height / (row.count + 1);
+        for (let i = 0; i < row.count && idx < teamPlayers.length; i++, idx++) {
+          const player = teamPlayers[idx];
+          const disc = createDisc(player, teamSide, idx, teamPlayers.length);
+          const xFactor = teamSide === "home" ? row.depth : 1 - row.depth;
+          const x = pitchRect.left + xFactor * pitchRect.width;
+          const y = pitchRect.top + (i + 1) * spacing;
+
+          disc.style.left = x + "px";
+          disc.style.top = y + "px";
+
+          discs.push({ player, disc, x, y });
+        }
+      });
+
+      return discs;
+    }
+
+    homePlayers = placeTeam(homePlayers, "home");
+    awayPlayers = placeTeam(awayPlayers, "away");
+
+    // Place ball at center
+    const ballX = pitchRect.left + centerX;
+    const ballY = pitchRect.top + centerY;
+    ballEl.style.left = ballX + "px";
+    ballEl.style.top = ballY + "px";
+    ballState.x = ballX;
+    ballState.y = ballY;
+    ballState.vx = 0;
+    ballState.vy = 0;
+    ballState.owner = null;
   }
 
-  function checkSbcCompletion() {
-    const squadPlayers = Object.values(fantasySquad);
-    if (squadPlayers.length === 0) {
-      sbcResultLabelEl.textContent = "SBC Status: No players in fantasy XI.";
+  layoutPlayers();
+
+  // =========================
+  // MATCH LOOP
+  // =========================
+
+  function startMatch() {
+    if (matchRunning) return;
+    matchRunning = true;
+    matchTime = 0;
+    hudScore.textContent = "0 - 0";
+    matchInterval = setInterval(tickMatch, 80);
+  }
+
+  function pauseMatch() {
+    matchRunning = false;
+    if (matchInterval) clearInterval(matchInterval);
+  }
+
+  function resetMatch() {
+    pauseMatch();
+    matchTime = 0;
+    hudTime.textContent = "00:00";
+    hudScore.textContent = "0 - 0";
+    layoutPlayers();
+  }
+
+  function tickMatch() {
+    matchTime += 4; // seconds per tick
+    const minutes = Math.floor(matchTime / 60);
+    const seconds = matchTime % 60;
+    hudTime.textContent =
+      String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+
+    // Simple AI: move players slightly, pass ball, random shots
+    function moveTeam(team) {
+      team.forEach(obj => {
+        const { disc } = obj;
+        let x = parseFloat(disc.style.left);
+        let y = parseFloat(disc.style.top);
+
+        const jitter = 4;
+        x += (Math.random() - 0.5) * jitter;
+        y += (Math.random() - 0.5) * jitter;
+
+        disc.style.left = x + "px";
+        disc.style.top = y + "px";
+
+        obj.x = x;
+        obj.y = y;
+      });
+    }
+
+    moveTeam(homePlayers);
+    moveTeam(awayPlayers);
+
+    // Ball physics: drift, pass, shoot
+    ballState.x += ballState.vx;
+    ballState.y += ballState.vy;
+    ballState.vx *= 0.95;
+    ballState.vy *= 0.95;
+
+    ballEl.style.left = ballState.x + "px";
+    ballEl.style.top = ballState.y + "px";
+
+    // If ball is slow, pick nearest player to take possession and maybe pass/shoot
+    if (Math.abs(ballState.vx) < 0.3 && Math.abs(ballState.vy) < 0.3) {
+      const allPlayers = homePlayers.concat(awayPlayers);
+      let nearest = null;
+      let nearestDist = Infinity;
+      allPlayers.forEach(obj => {
+        const dx = obj.x - ballState.x;
+        const dy = obj.y - ballState.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < nearestDist) {
+          nearestDist = dist;
+          nearest = obj;
+        }
+      });
+
+      if (nearest && nearestDist < 40) {
+        ballState.owner = nearest;
+        // Decide action: pass or shoot
+        const teamSide = nearest.disc.dataset.team;
+        const isHome = teamSide === "home";
+
+        const actionRoll = Math.random();
+        if (actionRoll < 0.7) {
+          // Pass: choose teammate
+          const team = isHome ? homePlayers : awayPlayers;
+          const target = team[Math.floor(Math.random() * team.length)];
+          const dx = target.x - ballState.x;
+          const dy = target.y - ballState.y;
+          const power = 0.25 + Math.random() * 0.4;
+          ballState.vx = dx * power / 40;
+          ballState.vy = dy * power / 40;
+        } else {
+          // Shoot: aim at goal
+          const pitchRect = document.querySelector(".pitch").getBoundingClientRect();
+          const goalX = isHome ? pitchRect.right - 10 : pitchRect.left + 10;
+          const goalY = pitchRect.top + pitchRect.height / 2;
+          const dx = goalX - ballState.x;
+          const dy = goalY - ballState.y;
+          const power = 0.6 + Math.random() * 0.5;
+          ballState.vx = dx * power / 60;
+          ballState.vy = dy * power / 60;
+
+          // Chance of goal
+          const goalChance = 0.25 + (nearest.player ? nearest.player.rating / 400 : 0.1);
+          if (Math.random() < goalChance) {
+            // Update score
+            const [homeScore, awayScore] = hudScore.textContent.split(" - ").map(Number);
+            if (isHome) {
+              hudScore.textContent = (homeScore + 1) + " - " + awayScore;
+            } else {
+              hudScore.textContent = homeScore + " - " + (awayScore + 1);
+            }
+          }
+        }
+      }
+    }
+
+    // End match at 90 minutes
+    if (matchTime >= 90 * 60) {
+      pauseMatch();
+      hudTime.textContent = "90:00";
+    }
+  }
+
+  // =========================
+  // CONTROLS
+  // =========================
+
+  document.getElementById("btnKickoff").addEventListener("click", () => {
+    startMatch();
+  });
+
+  document.getElementById("btnPause").addEventListener("click", () => {
+    pauseMatch();
+  });
+
+  document.getElementById("btnResetMatch").addEventListener("click", () => {
+    resetMatch();
+  });
+
+  document.getElementById("btnCareerControl").addEventListener("click", () => {
+    if (!controlledPlayer) {
+      alert("Select a player card first to control in Career Mode.");
       return;
     }
-
-    const nations = {};
-    const clubs = {};
-    let ratingSum = 0;
-
-    squadPlayers.forEach(p => {
-      nations[p.nation] = (nations[p.nation] || 0) + 1;
-      clubs[p.club] = (clubs[p.club] || 0) + 1;
-      ratingSum += p.rating;
-    });
-
-    const ratingAvg = ratingSum / squadPlayers.length;
-
-    const nationsCount = Object.values(nations).filter(c => c >= 1).length;
-    const clubsWith2 = Object.values(clubs).filter(c => c >= 2).length;
-
-    const nationsOk = nationsCount >= 3;
-    const clubsOk = clubsWith2 >= 1;
-    const ratingOk = ratingAvg >= 84;
-
-    const status = nationsOk && clubsOk && ratingOk ? "Completed" : "Not completed";
-    sbcResultLabelEl.textContent = `SBC Status: ${status} (Nations: ${nationsCount}, Clubs≥2: ${clubsWith2}, Avg Rating: ${ratingAvg.toFixed(1)})`;
-  }
-
-  checkSbcBtn.addEventListener("click", checkSbcCompletion);
-
-  renderFantasyPool();
-  renderFantasySlots();
-
-  // -----------------------------
-  // NAVIGATION BETWEEN MODES
-  // -----------------------------
-  const navItems = document.querySelectorAll(".nav-item");
-  const managerModeSectionEl = document.getElementById("managerModeSection");
-  const careerModeSectionEl = document.getElementById("careerModeSection");
-  const fantasyModeSectionEl = document.getElementById("fantasyModeSection");
-  const sbcSectionEl = document.getElementById("sbcSection");
-  const uclSectionEl = document.getElementById("uclSection");
-
-  function showMode(mode) {
-    managerModeSectionEl.classList.add("hidden");
-    careerModeSectionEl.classList.add("hidden");
-    fantasyModeSectionEl.classList.add("hidden");
-    sbcSectionEl.classList.add("hidden");
-    uclSectionEl.classList.add("hidden");
-
-    switch (mode) {
-      case "manager":
-        managerModeSectionEl.classList.remove("hidden");
-        break;
-      case "career":
-        careerModeSectionEl.classList.remove("hidden");
-        break;
-      case "fantasy":
-        fantasyModeSectionEl.classList.remove("hidden");
-        break;
-      case "sbc":
-        sbcSectionEl.classList.remove("hidden");
-        break;
-      case "ucl":
-        uclSectionEl.classList.remove("hidden");
-        break;
-    }
-  }
-
-  navItems.forEach(item => {
-    item.addEventListener("click", () => {
-      navItems.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-      const mode = item.dataset.mode;
-      showMode(mode);
-    });
+    currentMode = "career";
+    updateModeHUD();
+    alert("Career Mode: You are now controlling " + controlledPlayer.name + ". Use your imagination for movement; AI handles the rest.");
   });
 
-  // -----------------------------
-  // GLOBAL RESET
-  // -----------------------------
-  document.getElementById("resetAllBtn").addEventListener("click", () => {
-    managerCoins = 50000;
-    managerRoster = [];
-    managerCoinsEl.textContent = managerCoins;
-    renderRoster();
-    matchLogEl.innerHTML = "";
-    matchResultLabelEl.textContent = "-";
-    clearPitch();
-
-    Object.keys(fantasySquad).forEach(k => delete fantasySquad[k]);
-    renderFantasySlots();
-    sbcResultLabelEl.textContent = "SBC Status: Not checked";
-
-    careerPlayer = {
-      shooting: 80,
-      passing: 80,
-      dribbling: 80,
-      physical: 80,
-      playstylesGold: [],
-      playstylesSilver: null
-    };
-    renderCareerStats();
-    renderCareerPlaystyles();
-    careerLogEl.innerHTML = "";
-    renderCareerPitch();
-  });
-
-  document.getElementById("githubHintBtn").addEventListener("click", () => {
-    alert("This file is self-contained. Commit it as index.html to your GitHub repo and start iterating FC26-style.");
-  });
-
-  // Initial render
-  renderMarket();
+  // Initial coins display
+  updateCoinsDisplay();
 </script>
 </body>
 </html>
