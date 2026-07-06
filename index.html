@@ -2,48 +2,587 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>GitHub FC26 Browser Edition</title>
+  <title>WC26 FC Ultimate Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fonts & basic styling hooks -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <h1>GitHub FC26 Browser Edition</h1>
-    <div class="subtitle">Fake 3D · Weather · Crowd · WASD + Space</div>
-  </header>
-
-  <main>
-    <section id="stadium">
-      <canvas id="pitch" width="960" height="540"></canvas>
-    </section>
-
-    <section id="hud">
-      <div id="scoreHud">Home 0 - 0 Away</div>
-      <div id="timeHud">00:00</div>
-
-      <div class="row">
-        <button id="restartBtn">Restart Match</button>
-        <select id="weatherSelect">
-          <option value="clear">Clear Day</option>
-          <option value="rain">Rain</option>
-          <option value="night">Night Lights</option>
-        </select>
+<body class="theme-wc26">
+  <!-- GLOBAL SHELL -->
+  <div id="app">
+    <!-- TOP NAV / BRANDING -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="logo-pill">
+          <span class="logo-main">FC26</span>
+          <span class="logo-sub">WORLD CUP 26</span>
+        </div>
+        <div class="tagline">Icons · Heroes · TOTY · TOTS · Special Cards</div>
       </div>
-
-      <div class="controls">
-        <p><strong>Controls:</strong></p>
-        <p>Move: W / A / S / D</p>
-        <p>Shoot: Space (toward goal)</p>
+      <nav class="main-menu">
+        <button class="menu-btn" data-view="hub">Hub</button>
+        <button class="menu-btn" data-view="fantasy">Fantasy Team</button>
+        <button class="menu-btn" data-view="manager">Manager Mode</button>
+        <button class="menu-btn" data-view="career">Player Career</button>
+        <button class="menu-btn" data-view="ucl">Champions League</button>
+        <button class="menu-btn" data-view="sbc">SBCs</button>
+      </nav>
+      <div class="wallet">
+        <div class="wallet-label">FUTCoins</div>
+        <div class="wallet-value" id="walletCoins">50,000</div>
       </div>
+    </header>
 
-      <div id="crowdHud">Crowd: 100%</div>
-    </section>
-  </main>
+    <!-- MAIN LAYOUT -->
+    <main class="layout">
+      <!-- LEFT: STADIUM / MATCH VIEW -->
+      <section class="stadium-shell">
+        <header class="stadium-header">
+          <div class="stadium-title">
+            <span id="stadiumName">Camp Nou</span>
+            <span class="stadium-sub">Fake 3D · Dynamic Weather · Crowd</span>
+          </div>
+          <div class="stadium-controls">
+            <select id="stadiumSelect">
+              <option value="camp_nou">Camp Nou</option>
+              <option value="bernabeu">Santiago Bernabéu</option>
+              <option value="wembley">Wembley</option>
+              <option value="maracana">Maracanã</option>
+              <option value="allianz">Allianz Arena</option>
+            </select>
+            <select id="weatherSelect">
+              <option value="clear">Clear Day</option>
+              <option value="rain">Rain</option>
+              <option value="night">Night Lights</option>
+            </select>
+          </div>
+        </header>
 
-  <footer>
-    GitHub FC26 · Fake 3D, browser‑only. Fork it, mod it, break it.
-  </footer>
+        <!-- Fake 3D pitch canvas -->
+        <div class="stadium-viewport">
+          <canvas id="pitchCanvas" width="1280" height="720"></canvas>
+          <div class="hud-overlay">
+            <div class="hud-score" id="hudScore">HOME 0 - 0 AWAY</div>
+            <div class="hud-time" id="hudTime">00:00</div>
+            <div class="hud-crowd" id="hudCrowd">Crowd: 100%</div>
+            <div class="hud-mode" id="hudMode">Mode: Manager Simulation</div>
+          </div>
+        </div>
 
+        <!-- Match control bar -->
+        <footer class="stadium-footer">
+          <div class="control-group">
+            <button id="btnKickOff">Kick Off</button>
+            <button id="btnSimMatch">Simulate Match</button>
+            <button id="btnPause">Pause</button>
+            <button id="btnRestartMatch">Restart</button>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Career Controls:</span>
+            <span>Move: WASD · Shoot: Space · Skill: Q/E · Lob: R · Chip: F</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- RIGHT: HUB / MENUS / CARDS -->
+      <section class="side-shell">
+        <!-- HUB VIEW -->
+        <section class="panel" id="viewHub">
+          <header class="panel-header">
+            <h2>WC26 Ultimate Hub</h2>
+            <p>Choose your path: Fantasy · Manager · Career · UCL · SBCs</p>
+          </header>
+          <div class="panel-body hub-grid">
+            <div class="hub-card" data-view-target="fantasy">
+              <h3>Fantasy Team Draft</h3>
+              <p>Build your dream XI with no coin cost. Chemistry, nations, leagues—like FUT Draft.</p>
+              <button>Enter Fantasy Team</button>
+            </div>
+            <div class="hub-card" data-view-target="manager">
+              <h3>Manager Mode</h3>
+              <p>Start with 50k FUTCoins, sign players, build tactics, simulate matches in real stadiums.</p>
+              <button>Enter Manager Mode</button>
+            </div>
+            <div class="hub-card" data-view-target="career">
+              <h3>Player Career</h3>
+              <p>Join clubs, step onto the pitch, equip playstyles, and become a WC26 legend.</p>
+              <button>Enter Career Mode</button>
+            </div>
+            <div class="hub-card" data-view-target="ucl">
+              <h3>Champions League Mode</h3>
+              <p>Group stages, knockouts, finals—take your club to European glory.</p>
+              <button>Enter UCL Mode</button>
+            </div>
+            <div class="hub-card" data-view-target="sbc">
+              <h3>SBCs & Special Content</h3>
+              <p>Submit squads to unlock Icons, Heroes, TOTY, TOTS, and WC26 specials.</p>
+              <button>Enter SBCs</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- FANTASY TEAM VIEW -->
+        <section class="panel hidden" id="viewFantasy">
+          <header class="panel-header">
+            <h2>Fantasy Team Draft 26</h2>
+            <p>No coins. Pure creativity. Build your dream XI with chemistry.</p>
+          </header>
+          <div class="panel-body">
+            <div class="fantasy-layout">
+              <div class="fantasy-meta">
+                <div>Formation:
+                  <select id="fantasyFormation">
+                    <option value="433">4-3-3</option>
+                    <option value="442">4-4-2</option>
+                    <option value="4231">4-2-3-1</option>
+                    <option value="352">3-5-2</option>
+                  </select>
+                </div>
+                <div>Chemistry: <span id="fantasyChem">0 / 33</span></div>
+                <button id="fantasyReset">Reset Draft</button>
+              </div>
+              <div class="fantasy-pitch">
+                <!-- Slots for XI (just placeholders, JS fills) -->
+                <div class="slot" data-pos="GK">GK</div>
+                <div class="slot" data-pos="LB">LB</div>
+                <div class="slot" data-pos="CB1">CB</div>
+                <div class="slot" data-pos="CB2">CB</div>
+                <div class="slot" data-pos="RB">RB</div>
+                <div class="slot" data-pos="CM1">CM</div>
+                <div class="slot" data-pos="CM2">CM</div>
+                <div class="slot" data-pos="CAM">CAM</div>
+                <div class="slot" data-pos="LW">LW</div>
+                <div class="slot" data-pos="RW">RW</div>
+                <div class="slot" data-pos="ST">ST</div>
+              </div>
+              <div class="fantasy-pool">
+                <h3>Player Pool</h3>
+                <p>Drag players into slots to build your fantasy XI.</p>
+                <div class="card-grid" id="fantasyCardGrid">
+                  <!-- Cards populated by JS from master player list -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MANAGER MODE VIEW -->
+        <section class="panel hidden" id="viewManager">
+          <header class="panel-header">
+            <h2>Manager Mode · WC26</h2>
+            <p>Start with 50,000 FUTCoins. Sign players, build tactics, simulate matches.</p>
+          </header>
+          <div class="panel-body manager-layout">
+            <div class="manager-meta">
+              <div>Club: <span id="managerClub">Custom FC</span></div>
+              <div>Budget: <span id="managerBudget">50,000 FUTCoins</span></div>
+              <div>Record: <span id="managerRecord">0W - 0D - 0L</span></div>
+              <div>Next Opponent: <span id="managerOpponent">Real Madrid</span></div>
+              <button id="managerSimNext">Simulate Next Match</button>
+            </div>
+
+            <div class="manager-roster">
+              <h3>Squad Roster</h3>
+              <div class="card-grid" id="managerSquadGrid">
+                <!-- Signed players appear here -->
+              </div>
+            </div>
+
+            <div class="manager-market">
+              <h3>Transfer Market · 50+ Footballers</h3>
+              <p>Click a card to sign if you have enough FUTCoins.</p>
+              <div class="card-grid" id="managerMarketGrid">
+                <!-- Market cards from master player list -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CAREER MODE VIEW -->
+        <section class="panel hidden" id="viewCareer">
+          <header class="panel-header">
+            <h2>Player Career · WC26</h2>
+            <p>Create your pro, choose playstyles, join clubs, and step onto the pitch.</p>
+          </header>
+          <div class="panel-body career-layout">
+            <div class="career-setup">
+              <h3>Player Setup</h3>
+              <label>
+                Name:
+                <input type="text" id="careerName" placeholder="Your Name" />
+              </label>
+              <label>
+                Position:
+                <select id="careerPosition">
+                  <option value="ST">Striker</option>
+                  <option value="CAM">Attacking Midfielder</option>
+                  <option value="CM">Central Midfielder</option>
+                  <option value="LW">Left Winger</option>
+                  <option value="RW">Right Winger</option>
+                  <option value="CB">Centre Back</option>
+                  <option value="LB">Left Back</option>
+                  <option value="RB">Right Back</option>
+                  <option value="GK">Goalkeeper</option>
+                </select>
+              </label>
+              <label>
+                Club:
+                <select id="careerClub">
+                  <option value="barcelona">FC Barcelona</option>
+                  <option value="real_madrid">Real Madrid</option>
+                  <option value="man_city">Manchester City</option>
+                  <option value="psg">Paris Saint-Germain</option>
+                  <option value="bayern">Bayern Munich</option>
+                  <option value="liverpool">Liverpool</option>
+                  <option value="argentina">Argentina NT</option>
+                  <option value="france">France NT</option>
+                  <option value="spain">Spain NT</option>
+                  <option value="brazil">Brazil NT</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="career-playstyles">
+              <h3>Playstyles (Pick 3 Gold, 1 Silver)</h3>
+              <div class="playstyle-grid">
+                <div class="playstyle-card" data-tier="gold">Finesse Shot</div>
+                <div class="playstyle-card" data-tier="gold">Trivela</div>
+                <div class="playstyle-card" data-tier="gold">Power Shot</div>
+                <div class="playstyle-card" data-tier="gold">Pinged Pass</div>
+                <div class="playstyle-card" data-tier="gold">Rapid Dribbler</div>
+                <div class="playstyle-card" data-tier="gold">Aerial Threat</div>
+                <div class="playstyle-card" data-tier="gold">Press Resistant</div>
+                <div class="playstyle-card" data-tier="silver">Long Passer</div>
+                <div class="playstyle-card" data-tier="silver">Clinical Finisher</div>
+                <div class="playstyle-card" data-tier="silver">Ball Winner</div>
+              </div>
+              <div class="playstyle-selected">
+                Selected: <span id="careerPlaystylesSelected">0 Gold · 0 Silver</span>
+              </div>
+              <button id="careerStart">Start Career Match</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- UCL MODE VIEW -->
+        <section class="panel hidden" id="viewUCL">
+          <header class="panel-header">
+            <h2>Champions League 26</h2>
+            <p>Group stages, knockouts, finals. Take your club to European glory.</p>
+          </header>
+          <div class="panel-body">
+            <div class="ucl-layout">
+              <div class="ucl-meta">
+                <div>Club: <span id="uclClub">Custom FC</span></div>
+                <div>Stage: <span id="uclStage">Group Stage</span></div>
+                <div>Record: <span id="uclRecord">0W - 0D - 0L</span></div>
+              </div>
+              <div class="ucl-fixtures">
+                <h3>Upcoming Fixtures</h3>
+                <ul id="uclFixtureList">
+                  <li>Custom FC vs Real Madrid</li>
+                  <li>Custom FC vs Bayern Munich</li>
+                  <li>Custom FC vs PSG</li>
+                </ul>
+              </div>
+              <div class="ucl-actions">
+                <button id="uclSimNext">Simulate Next UCL Match</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SBC VIEW -->
+        <section class="panel hidden" id="viewSBC">
+          <header class="panel-header">
+            <h2>SBCs · Icons · Heroes · Special Cards</h2>
+            <p>Submit squads to unlock WC26 specials, Icons, Heroes, TOTY, TOTS.</p>
+          </header>
+          <div class="panel-body sbc-layout">
+            <div class="sbc-list">
+              <h3>Available SBCs</h3>
+              <ul>
+                <li data-sbc="icon_striker">ICON Striker Upgrade</li>
+                <li data-sbc="hero_winger">Hero Winger Upgrade</li>
+                <li data-sbc="wc_special">WC26 Special Card</li>
+                <li data-sbc="toty_mid">TOTY Midfielder Upgrade</li>
+                <li data-sbc="tots_def">TOTS Defender Upgrade</li>
+              </ul>
+            </div>
+            <div class="sbc-detail">
+              <h3>Selected SBC</h3>
+              <p id="sbcDescription">Select an SBC to view requirements.</p>
+              <div class="sbc-requirements">
+                <!-- Requirements placeholder -->
+                <p>Example: 11 players · Min 85 rating · 3 nations · 2 leagues.</p>
+              </div>
+              <button id="sbcSubmit">Submit Squad</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PLAYER CARD MASTER LIST (50+ FOOTBALLERS) -->
+        <section class="panel" id="viewCards">
+          <header class="panel-header">
+            <h2>WC26 Player Database</h2>
+            <p>Icons, Heroes, Golds, Specials · Stats affect performance in all modes.</p>
+          </header>
+          <div class="panel-body">
+            <div class="card-filters">
+              <select id="filterRarity">
+                <option value="all">All Rarities</option>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="bronze">Bronze</option>
+                <option value="icon">Icon</option>
+                <option value="hero">Hero</option>
+                <option value="toty">TOTY</option>
+                <option value="tots">TOTS</option>
+                <option value="special">Special</option>
+              </select>
+              <select id="filterPosition">
+                <option value="all">All Positions</option>
+                <option value="ST">ST</option>
+                <option value="CF">CF</option>
+                <option value="LW">LW</option>
+                <option value="RW">RW</option>
+                <option value="CAM">CAM</option>
+                <option value="CM">CM</option>
+                <option value="CDM">CDM</option>
+                <option value="LB">LB</option>
+                <option value="RB">RB</option>
+                <option value="CB">CB</option>
+                <option value="GK">GK</option>
+              </select>
+            </div>
+
+            <div class="card-grid" id="masterCardGrid">
+              <!-- Example cards; JS can expand to 50+ -->
+              <!-- ICONS -->
+              <article class="player-card rarity-icon pos-ST"
+                       data-name="Pelé"
+                       data-rating="98"
+                       data-pac="95"
+                       data-sho="98"
+                       data-pas="94"
+                       data-dri="99"
+                       data-def="60"
+                       data-phy="85"
+                       data-club="Brazil Icons"
+                       data-nation="Brazil">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">98</span>
+                    <span class="card-position">ST</span>
+                    <span class="card-rarity">ICON</span>
+                  </div>
+                  <div class="card-name">Pelé</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 95</li>
+                    <li>SHO 98</li>
+                    <li>PAS 94</li>
+                    <li>DRI 99</li>
+                    <li>DEF 60</li>
+                    <li>PHY 85</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: Brazil</span>
+                    <span>Club: Icons</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="player-card rarity-icon pos-CAM"
+                       data-name="Zidane"
+                       data-rating="97"
+                       data-pac="80"
+                       data-sho="92"
+                       data-pas="98"
+                       data-dri="96"
+                       data-def="70"
+                       data-phy="82"
+                       data-club="France Icons"
+                       data-nation="France">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">97</span>
+                    <span class="card-position">CAM</span>
+                    <span class="card-rarity">ICON</span>
+                  </div>
+                  <div class="card-name">Zidane</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 80</li>
+                    <li>SHO 92</li>
+                    <li>PAS 98</li>
+                    <li>DRI 96</li>
+                    <li>DEF 70</li>
+                    <li>PHY 82</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: France</span>
+                    <span>Club: Icons</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- HEROES -->
+              <article class="player-card rarity-hero pos-ST"
+                       data-name="Didier Drogba"
+                       data-rating="93"
+                       data-pac="86"
+                       data-sho="94"
+                       data-pas="80"
+                       data-dri="84"
+                       data-def="55"
+                       data-phy="94"
+                       data-club="Chelsea Hero"
+                       data-nation="Ivory Coast">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">93</span>
+                    <span class="card-position">ST</span>
+                    <span class="card-rarity">HERO</span>
+                  </div>
+                  <div class="card-name">Drogba</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 86</li>
+                    <li>SHO 94</li>
+                    <li>PAS 80</li>
+                    <li>DRI 84</li>
+                    <li>DEF 55</li>
+                    <li>PHY 94</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: Ivory Coast</span>
+                    <span>Club: Chelsea</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- GOLD META PLAYERS (EXAMPLES, YOU CAN DUPLICATE TO 50+) -->
+              <article class="player-card rarity-gold pos-ST"
+                       data-name="Kylian Mbappé"
+                       data-rating="92"
+                       data-pac="97"
+                       data-sho="90"
+                       data-pas="82"
+                       data-dri="93"
+                       data-def="40"
+                       data-phy="82"
+                       data-club="Real Madrid"
+                       data-nation="France">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">92</span>
+                    <span class="card-position">ST</span>
+                    <span class="card-rarity">GOLD</span>
+                  </div>
+                  <div class="card-name">Kylian Mbappé</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 97</li>
+                    <li>SHO 90</li>
+                    <li>PAS 82</li>
+                    <li>DRI 93</li>
+                    <li>DEF 40</li>
+                    <li>PHY 82</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: France</span>
+                    <span>Club: Real Madrid</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="player-card rarity-gold pos-RW"
+                       data-name="Lamine Yamal"
+                       data-rating="78"
+                       data-pac="78"
+                       data-sho="69"
+                       data-pas="74"
+                       data-dri="75"
+                       data-def="23"
+                       data-phy="44"
+                       data-club="FC Barcelona"
+                       data-nation="Spain">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">78</span>
+                    <span class="card-position">RW</span>
+                    <span class="card-rarity">GOLD</span>
+                  </div>
+                  <div class="card-name">Lamine Yamal</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 78</li>
+                    <li>SHO 69</li>
+                    <li>PAS 74</li>
+                    <li>DRI 75</li>
+                    <li>DEF 23</li>
+                    <li>PHY 44</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: Spain</span>
+                    <span>Club: FC Barcelona</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="player-card rarity-gold pos-CM"
+                       data-name="Kevin De Bruyne"
+                       data-rating="91"
+                       data-pac="76"
+                       data-sho="88"
+                       data-pas="93"
+                       data-dri="88"
+                       data-def="64"
+                       data-phy="78"
+                       data-club="Manchester City"
+                       data-nation="Belgium">
+                <header>
+                  <div class="card-top">
+                    <span class="card-rating">91</span>
+                    <span class="card-position">CM</span>
+                    <span class="card-rarity">GOLD</span>
+                  </div>
+                  <div class="card-name">Kevin De Bruyne</div>
+                </header>
+                <div class="card-body">
+                  <ul class="stats">
+                    <li>PAC 76</li>
+                    <li>SHO 88</li>
+                    <li>PAS 93</li>
+                    <li>DRI 88</li>
+                    <li>DEF 64</li>
+                    <li>PHY 78</li>
+                  </ul>
+                  <div class="card-meta">
+                    <span>Nation: Belgium</span>
+                    <span>Club: Manchester City</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- You can duplicate this pattern to reach 50+ players:
+                   Messi, Ronaldo, Haaland, Vinícius Jr, Bellingham, Modrić,
+                   Salah, Kane, Son, Neymar, etc., across positions and rarities. -->
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- GAME / UI SCRIPT -->
   <script src="game.js"></script>
 </body>
 </html>
+
