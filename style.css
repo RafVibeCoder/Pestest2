@@ -52,7 +52,13 @@ main {
   font-size: 14px;
   opacity: 0.85;
 }
-#restartBtn {
+.row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+#restartBtn,
+#weatherSelect {
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -61,7 +67,16 @@ main {
   font-weight: 600;
   cursor: pointer;
 }
+#weatherSelect {
+  background: #1d3557;
+  color: #f1faee;
+  font-weight: 500;
+}
 .controls p { margin-bottom: 2px; }
+#crowdHud {
+  font-size: 12px;
+  opacity: 0.85;
+}
 canvas {
   width: 100%;
   height: auto;
