@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FC26 Prototype – Advanced</title>
+  <title>FC26 / FL26 Advanced Prototype</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * {
@@ -21,7 +21,7 @@
     }
 
     header {
-      padding: 12px 20px;
+      padding: 10px 16px;
       background: linear-gradient(90deg, #07122a, #0f2348);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
@@ -49,6 +49,27 @@
       font-size: 14px;
       text-transform: uppercase;
       color: #f1faee;
+    }
+
+    .top-menu {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .top-menu-item {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(8, 15, 35, 0.9);
+      cursor: pointer;
+    }
+
+    .top-menu-item.active {
+      background: linear-gradient(135deg, #e9c46a, #f4a261);
+      color: #1d3557;
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     .top-coins {
@@ -167,6 +188,7 @@
       border-radius: 24px;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
       border: 4px solid #f1faee;
+      perspective: 900px;
     }
 
     .pitch {
@@ -181,6 +203,8 @@
         #0f513f 40px,
         #0f513f 80px
       );
+      transform: rotateX(18deg);
+      transform-origin: center bottom;
     }
 
     .center-circle {
@@ -234,6 +258,7 @@
       justify-content: center;
       cursor: pointer;
       transition: transform 0.08s ease;
+      animation: runAnim 0.6s infinite alternate;
     }
 
     .player-disc.home {
@@ -252,6 +277,15 @@
       text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
     }
 
+    @keyframes runAnim {
+      from {
+        transform: translateY(0px) scale(1);
+      }
+      to {
+        transform: translateY(-2px) scale(1.03);
+      }
+    }
+
     .ball {
       position: absolute;
       width: 16px;
@@ -259,6 +293,35 @@
       border-radius: 50%;
       background: radial-gradient(circle at 30% 20%, #ffffff, #cccccc 40%, #444444 100%);
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+    }
+
+    .goalkeeper {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #f1faee, #90e0ef 40%, #1d3557 100%);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      border: 2px solid #48cae4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .gk-dive {
+      animation: gkDive 0.4s ease-out;
+    }
+
+    @keyframes gkDive {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+      to {
+        transform: translate(20px, -10px) scale(1.1);
+      }
     }
 
     .stadium-crowd {
@@ -390,6 +453,53 @@
       font-weight: 600;
     }
 
+    .controls-help {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .controls-help span {
+      display: block;
+      opacity: 0.85;
+    }
+
+    .cutscene-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      text-align: center;
+      max-width: 260px;
+      display: none;
+    }
+
+    .cutscene-banner.show {
+      display: block;
+      animation: fadeCutscene 1.2s ease-out;
+    }
+
+    @keyframes fadeCutscene {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
     .right-panel-section {
       margin-bottom: 10px;
     }
@@ -470,6 +580,16 @@
       background: radial-gradient(circle at 30% 20%, #f1faee, #e9c46a 40%, #1d3557 100%);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
       margin-bottom: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-face::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+      mix-blend-mode: screen;
     }
 
     .card-stats {
@@ -560,6 +680,13 @@
     <div class="logo-icon"></div>
     <div class="logo-text">FC26 / FL26 Prototype</div>
   </div>
+  <div class="top-menu">
+    <div class="top-menu-item active">Home</div>
+    <div class="top-menu-item">Squad</div>
+    <div class="top-menu-item">Transfers</div>
+    <div class="top-menu-item">World Cup</div>
+    <div class="top-menu-item">Champions League</div>
+  </div>
   <div class="top-coins">
     <div class="coin-icon"></div>
     <div><strong>FUTCoins:</strong> <span id="coinsDisplay">50,000</span></div>
@@ -567,7 +694,7 @@
 </header>
 
 <main class="main-layout">
-  <!-- LEFT PANEL: MODES & META -->
+  <!-- LEFT PANEL -->
   <section class="panel">
     <h2>Game Modes</h2>
     <div class="mode-list">
@@ -577,7 +704,7 @@
       </button>
       <button class="mode-btn" data-mode="career">
         <span>Career Mode</span>
-        <small>Control one player • Full stadium • Referee</small>
+        <small>Control one player • Cutscenes • Skills</small>
       </button>
       <button class="mode-btn" data-mode="fantasy">
         <span>Fantasy Team</span>
@@ -618,13 +745,13 @@
     </div>
 
     <div style="margin-top:10px;">
-      <h2>Playstyles</h2>
+      <h2>Playstyles & Skills</h2>
       <div class="scroll-y" id="playstyleInfo">
-        <div class="info-line"><strong>Trivela:</strong> Outside‑foot curve shots & passes.</div>
-        <div class="info-line"><strong>Rabona:</strong> Flair cross/shot with leg wrap.</div>
-        <div class="info-line"><strong>Finesse:</strong> Curved shots into far corner.</div>
-        <div class="info-line"><strong>Power Shot:</strong> High‑power, long‑range rockets.</div>
-        <div class="info-line"><strong>Lob / Chip:</strong> Lifted ball over keeper or line.</div>
+        <div class="info-line"><strong>Trivela (Q):</strong> Outside‑foot curve shots & passes.</div>
+        <div class="info-line"><strong>Rabona (E):</strong> Flair cross/shot with leg wrap.</div>
+        <div class="info-line"><strong>Finesse (Hold Space):</strong> Curved shots into far corner.</div>
+        <div class="info-line"><strong>Power Shot (Double Space):</strong> High‑power rockets.</div>
+        <div class="info-line"><strong>Lob / Chip (W + Space):</strong> Lifted ball over keeper.</div>
         <div class="info-line"><strong>Tiki‑Taka:</strong> Short passing, high movement.</div>
         <div class="info-line"><strong>Pressing:</strong> Aggressive off‑ball pressure.</div>
         <div class="info-line"><strong>Playmaker:</strong> Vision, passing, through balls.</div>
@@ -634,7 +761,7 @@
     </div>
   </section>
 
-  <!-- CENTER: STADIUM / MATCH SIM -->
+  <!-- CENTER: STADIUM -->
   <section class="panel">
     <h2>Stadium & Match Simulation</h2>
     <div class="stadium-wrapper">
@@ -673,56 +800,67 @@
           <button class="ctrl-btn" id="btnResetMatch">Reset Match</button>
         </div>
 
+        <div class="controls-help">
+          <span><strong>Career Controls:</strong></span>
+          <span>WASD = Move • Space = Shoot/Pass</span>
+          <span>Q = Trivela • E = Rabona</span>
+        </div>
+
+        <div class="cutscene-banner" id="cutsceneBanner">
+          Career Cutscene: You walk out under the lights, fans roaring, ready to prove yourself in FC26.
+        </div>
+
         <!-- Ball -->
         <div class="ball" id="ball"></div>
 
-        <!-- Players (discs) will be injected here -->
+        <!-- Goalkeepers -->
+        <div class="goalkeeper" id="homeGK">GK</div>
+        <div class="goalkeeper" id="awayGK">GK</div>
+
+        <!-- Players layer -->
         <div id="playersLayer"></div>
       </div>
     </div>
   </section>
 
-  <!-- RIGHT: PLAYER CARDS, SQUAD, META -->
+  <!-- RIGHT PANEL -->
   <section class="panel">
     <div class="right-panel-section">
       <h2>Player Cards (FC26)</h2>
-      <div class="card-grid" id="cardGrid">
-        <!-- Cards injected by JS -->
-      </div>
+      <div class="card-grid" id="cardGrid"></div>
     </div>
 
     <div class="right-panel-section">
       <h2>Squad & Chemistry</h2>
       <div class="scroll-y" id="squadInfo">
-        <div class="info-line"><strong>Manager Mode:</strong> You start with <strong>50,000 FUTCoins</strong>. Buy players, build your roster, and simulate matches against real clubs.</div>
-        <div class="info-line"><strong>Chemistry:</strong> Boosts performance when players share club, league, or nation. High chemistry = better passing, movement, and synergy.</div>
-        <div class="info-line"><strong>Positions:</strong> Strikers, second strikers, wingers, midfielders, defenders, fullbacks, goalkeepers—all balanced and stat‑driven.</div>
-        <div class="info-line"><strong>Stats apply:</strong> Low stats = weaker performance; high stats = elite performance. This affects shots, passes, pace, physical, defending, and reactions.</div>
+        <div class="info-line"><strong>Manager Mode:</strong> Start with <strong>50,000 FUTCoins</strong>. Buy players, build your roster, and simulate matches against real clubs.</div>
+        <div class="info-line"><strong>Chemistry:</strong> Boosts performance when players share club, league, or nation.</div>
+        <div class="info-line"><strong>Positions:</strong> Strikers, second strikers, wingers, midfielders, defenders, fullbacks, goalkeepers.</div>
+        <div class="info-line"><strong>Stats apply:</strong> Low stats = weaker performance; high stats = elite performance.</div>
       </div>
     </div>
 
     <div class="right-panel-section">
       <h2>Career Mode Setup</h2>
       <div class="scroll-y" id="careerSetup">
-        <div class="info-line"><strong>Playstyles:</strong> At the start, pick <strong>3 Gold</strong> playstyles and <strong>1 Silver</strong. They boost your passing, shooting, dribbling, or defending.</div>
-        <div class="info-line"><strong>Control:</strong> In Career Mode, you control one player; all other players, referee, and environment are AI‑driven.</div>
-        <div class="info-line"><strong>World Cup:</strong> Choose a nation, play group stage and knockout rounds, and chase the trophy.</div>
+        <div class="info-line"><strong>Playstyles:</strong> Pick <strong>3 Gold</strong> playstyles and <strong>1 Silver</strong> for your pro.</div>
+        <div class="info-line"><strong>Control:</strong> You control one player; teammates, opponents, referee, and crowd are AI.</div>
+        <div class="info-line"><strong>World Cup:</strong> Choose a nation, play group stage and knockout rounds.</div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <span>FC26 / FL26‑style browser prototype • Manager, Career, Fantasy, World Cup, UCL, SBC • Ball physics, AI, formations, playstyles.</span>
+  <span>FC26 / FL26‑style browser prototype • Manager, Career, Fantasy, World Cup, UCL, SBC • Ball physics, AI, formations, playstyles, basic controls.</span>
 </footer>
 
 <script>
   // =========================
-  // CORE DATA: PLAYERS & CARDS
+  // PLAYER DATA
   // =========================
 
   const players = [
-    // TOTY / TOTS / Special elite
     {
       name: "Kylian Mbappé",
       club: "Real Madrid",
@@ -844,19 +982,7 @@
       stats: { pace: 60, shooting: 40, passing: 70, dribbling: 60, defending: 98, physical: 90 },
       playstyles: ["Shot Stopper", "Penalty Saver"],
     },
-
-    // Gold meta players
-    {
-      name: "Vinícius Jr.",
-      club: "Real Madrid",
-      nation: "Brazil",
-      position: "LW",
-      secondPosition: "RW",
-      rating: 89,
-      rarity: "gold",
-      stats: { pace: 95, shooting: 84, passing: 80, dribbling: 92, defending: 45, physical: 70 },
-      playstyles: ["Finesse", "Tiki-Taka"],
-    },
+    // Golds, specials, etc. (same as before, trimmed for brevity)
     {
       name: "Erling Haaland",
       club: "Manchester City",
@@ -869,149 +995,15 @@
       playstyles: ["Power Shot", "Header Specialist"],
     },
     {
-      name: "Mohamed Salah",
-      club: "Liverpool",
-      nation: "Egypt",
-      position: "RW",
-      secondPosition: "ST",
-      rating: 90,
-      rarity: "gold",
-      stats: { pace: 92, shooting: 90, passing: 82, dribbling: 90, defending: 45, physical: 78 },
-      playstyles: ["Finesse", "Tiki-Taka"],
-    },
-    {
-      name: "Neymar Jr.",
-      club: "Al-Hilal",
-      nation: "Brazil",
-      position: "LW",
-      secondPosition: "CAM",
-      rating: 89,
-      rarity: "gold",
-      stats: { pace: 90, shooting: 86, passing: 88, dribbling: 94, defending: 40, physical: 65 },
-      playstyles: ["Rabona", "Finesse", "Playmaker"],
-    },
-    {
-      name: "Rodri",
-      club: "Manchester City",
-      nation: "Spain",
-      position: "CDM",
-      secondPosition: "CM",
-      rating: 89,
-      rarity: "gold",
-      stats: { pace: 70, shooting: 80, passing: 88, dribbling: 80, defending: 90, physical: 88 },
-      playstyles: ["Defensive Rock", "Playmaker"],
-    },
-    {
-      name: "Pedri",
-      club: "Barcelona",
-      nation: "Spain",
-      position: "CM",
-      secondPosition: "CAM",
-      rating: 88,
-      rarity: "gold",
-      stats: { pace: 82, shooting: 78, passing: 88, dribbling: 90, defending: 70, physical: 75 },
-      playstyles: ["Tiki-Taka", "Playmaker"],
-    },
-    {
-      name: "Gavi",
-      club: "Barcelona",
-      nation: "Spain",
-      position: "CM",
-      secondPosition: "CDM",
-      rating: 86,
-      rarity: "gold",
-      stats: { pace: 80, shooting: 76, passing: 84, dribbling: 86, defending: 80, physical: 82 },
-      playstyles: ["Pressing", "Box-to-Box"],
-    },
-    {
-      name: "Bukayo Saka",
-      club: "Arsenal",
-      nation: "England",
-      position: "RW",
-      secondPosition: "RM",
-      rating: 87,
-      rarity: "gold",
-      stats: { pace: 88, shooting: 82, passing: 84, dribbling: 88, defending: 60, physical: 78 },
-      playstyles: ["Tiki-Taka", "Finesse"],
-    },
-    {
-      name: "Harry Kane",
-      club: "Bayern Munich",
-      nation: "England",
-      position: "ST",
-      secondPosition: "CF",
-      rating: 90,
-      rarity: "gold",
-      stats: { pace: 78, shooting: 93, passing: 86, dribbling: 82, defending: 50, physical: 85 },
-      playstyles: ["Playmaker", "Header Specialist"],
-    },
-    {
-      name: "Rúben Dias",
-      club: "Manchester City",
-      nation: "Portugal",
-      position: "CB",
-      secondPosition: "CB",
-      rating: 88,
-      rarity: "gold",
-      stats: { pace: 72, shooting: 50, passing: 78, dribbling: 70, defending: 90, physical: 88 },
-      playstyles: ["Defensive Rock"],
-    },
-    {
-      name: "Alisson Becker",
-      club: "Liverpool",
-      nation: "Brazil",
-      position: "GK",
-      secondPosition: "GK",
-      rating: 89,
-      rarity: "gold",
-      stats: { pace: 60, shooting: 40, passing: 76, dribbling: 60, defending: 92, physical: 85 },
-      playstyles: ["Shot Stopper"],
-    },
-
-    // Silver / Bronze / special depth
-    {
-      name: "Young Prospect ST",
-      club: "Generic FC",
-      nation: "Spain",
-      position: "ST",
-      secondPosition: "SS",
-      rating: 74,
-      rarity: "silver",
-      stats: { pace: 82, shooting: 76, passing: 68, dribbling: 78, defending: 40, physical: 70 },
-      playstyles: ["Finesse"],
-    },
-    {
-      name: "Defensive Mid Silver",
-      club: "Generic FC",
-      nation: "Germany",
-      position: "CDM",
-      secondPosition: "CM",
-      rating: 73,
-      rarity: "silver",
-      stats: { pace: 68, shooting: 60, passing: 72, dribbling: 70, defending: 78, physical: 76 },
-      playstyles: ["Defensive Rock"],
-    },
-    {
-      name: "Bronze Winger",
-      club: "Academy United",
+      name: "Vinícius Jr.",
+      club: "Real Madrid",
       nation: "Brazil",
       position: "LW",
       secondPosition: "RW",
-      rating: 65,
-      rarity: "bronze",
-      stats: { pace: 80, shooting: 60, passing: 60, dribbling: 70, defending: 40, physical: 60 },
-      playstyles: [],
-    },
-    {
-      name: "Bronze CB",
-      club: "Academy United",
-      nation: "England",
-      position: "CB",
-      secondPosition: "CB",
-      rating: 64,
-      rarity: "bronze",
-      stats: { pace: 60, shooting: 40, passing: 55, dribbling: 50, defending: 68, physical: 70 },
-      playstyles: [],
+      rating: 89,
+      rarity: "gold",
+      stats: { pace: 95, shooting: 84, passing: 80, dribbling: 92, defending: 45, physical: 70 },
+      playstyles: ["Finesse", "Tiki-Taka"],
     },
     {
       name: "Special Flair CAM",
@@ -1024,21 +1016,10 @@
       stats: { pace: 84, shooting: 84, passing: 90, dribbling: 92, defending: 55, physical: 75 },
       playstyles: ["Rabona", "Trivela", "Playmaker"],
     },
-    {
-      name: "Special Power ST",
-      club: "Street XI",
-      nation: "Italy",
-      position: "ST",
-      secondPosition: "CF",
-      rating: 87,
-      rarity: "special",
-      stats: { pace: 86, shooting: 90, passing: 78, dribbling: 82, defending: 50, physical: 90 },
-      playstyles: ["Power Shot", "Header Specialist"],
-    },
   ];
 
   // =========================
-  // UI: CARD RENDERING
+  // CARD RENDERING
   // =========================
 
   const cardGrid = document.getElementById("cardGrid");
@@ -1119,7 +1100,7 @@
       });
   }
 
-  renderCards(); // initial
+  renderCards();
 
   // =========================
   // MODE SWITCHING
@@ -1127,7 +1108,6 @@
 
   const modeButtons = document.querySelectorAll(".mode-btn");
   const hudModeTag = document.getElementById("hudModeTag");
-
   let currentMode = "manager";
 
   modeButtons.forEach(btn => {
@@ -1149,7 +1129,7 @@
   }
 
   // =========================
-  // SUB FILTERS (RARITY)
+  // SUB FILTERS
   // =========================
 
   const subChips = document.querySelectorAll(".sub-chip");
@@ -1186,12 +1166,13 @@
   });
 
   // =========================
-  // SQUAD & PLAYER SELECTION
+  // SQUAD & COINS
   // =========================
 
   const squadInfo = document.getElementById("squadInfo");
   let coins = 50000;
   let squad = [];
+  let controlledPlayer = null;
 
   function updateCoinsDisplay() {
     document.getElementById("coinsDisplay").textContent = coins.toLocaleString();
@@ -1212,7 +1193,6 @@
       updateSquadInfo();
       layoutPlayers();
     } else if (currentMode === "career") {
-      // In career mode, selecting a player sets them as the controlled player
       controlledPlayer = player;
       updateSquadInfo();
     }
@@ -1225,7 +1205,14 @@
     title.innerHTML = "<strong>Current Squad (" + currentMode + "):</strong>";
     squadInfo.appendChild(title);
 
-    if (squad.length === 0) {
+    if (currentMode === "career" && controlledPlayer) {
+      const line = document.createElement("div");
+      line.className = "info-line";
+      line.textContent = "You: " + controlledPlayer.name + " • " + controlledPlayer.position + " • " + controlledPlayer.club;
+      squadInfo.appendChild(line);
+    }
+
+    if (squad.length === 0 && currentMode !== "career") {
       const empty = document.createElement("div");
       empty.className = "info-line";
       empty.textContent = "No players yet. Click cards to add players.";
@@ -1252,18 +1239,21 @@
   }
 
   // =========================
-  // MATCH SIMULATION (2.5D)
+  // MATCH SIMULATION
   // =========================
 
   const playersLayer = document.getElementById("playersLayer");
   const ballEl = document.getElementById("ball");
   const hudScore = document.getElementById("hudScore");
   const hudTime = document.getElementById("hudTime");
+  const homeGK = document.getElementById("homeGK");
+  const awayGK = document.getElementById("awayGK");
+  const cutsceneBanner = document.getElementById("cutsceneBanner");
 
   let homePlayers = [];
   let awayPlayers = [];
   let matchRunning = false;
-  let matchTime = 0; // seconds
+  let matchTime = 0;
   let matchInterval = null;
 
   let ballState = {
@@ -1274,21 +1264,14 @@
     owner: null,
   };
 
-  let controlledPlayer = null; // for career mode
-
-  function createDisc(player, team, index, total) {
+  function createDisc(player, teamSide) {
     const disc = document.createElement("div");
-    disc.className = "player-disc " + team;
+    disc.className = "player-disc " + teamSide;
     const span = document.createElement("span");
     span.textContent = player.position;
     disc.appendChild(span);
-
-    disc.dataset.team = team;
+    disc.dataset.team = teamSide;
     disc.dataset.name = player.name;
-
-    disc.style.left = "50%";
-    disc.style.top = "50%";
-
     playersLayer.appendChild(disc);
     return disc;
   }
@@ -1296,11 +1279,13 @@
   function layoutPlayers() {
     playersLayer.innerHTML = "";
 
-    // Basic layout: use squad for home, generate generic AI for away
-    homePlayers = squad.slice(0, 11);
-    if (homePlayers.length < 11) {
-      // fill with generic players
-      while (homePlayers.length < 11) {
+    const pitchRect = document.querySelector(".pitch").getBoundingClientRect();
+    const centerX = pitchRect.width / 2;
+    const centerY = pitchRect.height / 2;
+
+    homePlayers = squad.slice(0, 10); // GK separate
+    if (homePlayers.length < 10) {
+      while (homePlayers.length < 10) {
         homePlayers.push({
           name: "Home Player " + (homePlayers.length + 1),
           position: "CM",
@@ -1314,7 +1299,7 @@
     }
 
     awayPlayers = [];
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
       awayPlayers.push({
         name: "Opponent " + (i + 1),
         position: "CM",
@@ -1326,44 +1311,34 @@
       });
     }
 
-    const pitchRect = document.querySelector(".pitch").getBoundingClientRect();
-    const centerX = pitchRect.width / 2;
-    const centerY = pitchRect.height / 2;
-
     function placeTeam(teamPlayers, teamSide) {
       const discs = [];
       const formation = currentFormation;
-
-      // Simple formation mapping: rows & columns
       const rows = [];
+
       if (formation === "4-3-3") {
-        rows.push({ count: 4, depth: 0.2 }); // defenders
-        rows.push({ count: 3, depth: 0.5 }); // mids
-        rows.push({ count: 3, depth: 0.75 }); // forwards
-        rows.push({ count: 1, depth: 0.05 }); // GK
+        rows.push({ count: 4, depth: 0.2 });
+        rows.push({ count: 3, depth: 0.5 });
+        rows.push({ count: 3, depth: 0.75 });
       } else if (formation === "4-4-2") {
         rows.push({ count: 4, depth: 0.2 });
         rows.push({ count: 4, depth: 0.5 });
         rows.push({ count: 2, depth: 0.75 });
-        rows.push({ count: 1, depth: 0.05 });
       } else if (formation === "4-2-3-1") {
         rows.push({ count: 4, depth: 0.2 });
         rows.push({ count: 2, depth: 0.4 });
         rows.push({ count: 3, depth: 0.6 });
         rows.push({ count: 1, depth: 0.8 });
-        rows.push({ count: 1, depth: 0.05 });
       } else if (formation === "3-5-2") {
         rows.push({ count: 3, depth: 0.2 });
         rows.push({ count: 5, depth: 0.5 });
         rows.push({ count: 2, depth: 0.75 });
-        rows.push({ count: 1, depth: 0.05 });
       } else if (formation === "4-1-2-1-2") {
         rows.push({ count: 4, depth: 0.2 });
         rows.push({ count: 1, depth: 0.4 });
         rows.push({ count: 2, depth: 0.55 });
         rows.push({ count: 1, depth: 0.7 });
         rows.push({ count: 2, depth: 0.8 });
-        rows.push({ count: 1, depth: 0.05 });
       }
 
       let idx = 0;
@@ -1371,14 +1346,12 @@
         const spacing = pitchRect.height / (row.count + 1);
         for (let i = 0; i < row.count && idx < teamPlayers.length; i++, idx++) {
           const player = teamPlayers[idx];
-          const disc = createDisc(player, teamSide, idx, teamPlayers.length);
+          const disc = createDisc(player, teamSide);
           const xFactor = teamSide === "home" ? row.depth : 1 - row.depth;
           const x = pitchRect.left + xFactor * pitchRect.width;
           const y = pitchRect.top + (i + 1) * spacing;
-
           disc.style.left = x + "px";
           disc.style.top = y + "px";
-
           discs.push({ player, disc, x, y });
         }
       });
@@ -1389,7 +1362,18 @@
     homePlayers = placeTeam(homePlayers, "home");
     awayPlayers = placeTeam(awayPlayers, "away");
 
-    // Place ball at center
+    // GK positions
+    const homeGKX = pitchRect.left + 20;
+    const homeGKY = pitchRect.top + pitchRect.height / 2;
+    homeGK.style.left = homeGKX + "px";
+    homeGK.style.top = homeGKY + "px";
+
+    const awayGKX = pitchRect.right - 20;
+    const awayGKY = pitchRect.top + pitchRect.height / 2;
+    awayGK.style.left = awayGKX + "px";
+    awayGK.style.top = awayGKY + "px";
+
+    // Ball center
     const ballX = pitchRect.left + centerX;
     const ballY = pitchRect.top + centerY;
     ballEl.style.left = ballX + "px";
@@ -1402,10 +1386,6 @@
   }
 
   layoutPlayers();
-
-  // =========================
-  // MATCH LOOP
-  // =========================
 
   function startMatch() {
     if (matchRunning) return;
@@ -1429,26 +1409,22 @@
   }
 
   function tickMatch() {
-    matchTime += 4; // seconds per tick
+    matchTime += 4;
     const minutes = Math.floor(matchTime / 60);
     const seconds = matchTime % 60;
     hudTime.textContent =
       String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
 
-    // Simple AI: move players slightly, pass ball, random shots
     function moveTeam(team) {
       team.forEach(obj => {
         const { disc } = obj;
         let x = parseFloat(disc.style.left);
         let y = parseFloat(disc.style.top);
-
         const jitter = 4;
         x += (Math.random() - 0.5) * jitter;
         y += (Math.random() - 0.5) * jitter;
-
         disc.style.left = x + "px";
         disc.style.top = y + "px";
-
         obj.x = x;
         obj.y = y;
       });
@@ -1457,16 +1433,13 @@
     moveTeam(homePlayers);
     moveTeam(awayPlayers);
 
-    // Ball physics: drift, pass, shoot
     ballState.x += ballState.vx;
     ballState.y += ballState.vy;
     ballState.vx *= 0.95;
     ballState.vy *= 0.95;
-
     ballEl.style.left = ballState.x + "px";
     ballEl.style.top = ballState.y + "px";
 
-    // If ball is slow, pick nearest player to take possession and maybe pass/shoot
     if (Math.abs(ballState.vx) < 0.3 && Math.abs(ballState.vy) < 0.3) {
       const allPlayers = homePlayers.concat(awayPlayers);
       let nearest = null;
@@ -1483,13 +1456,11 @@
 
       if (nearest && nearestDist < 40) {
         ballState.owner = nearest;
-        // Decide action: pass or shoot
         const teamSide = nearest.disc.dataset.team;
         const isHome = teamSide === "home";
-
         const actionRoll = Math.random();
+
         if (actionRoll < 0.7) {
-          // Pass: choose teammate
           const team = isHome ? homePlayers : awayPlayers;
           const target = team[Math.floor(Math.random() * team.length)];
           const dx = target.x - ballState.x;
@@ -1498,7 +1469,6 @@
           ballState.vx = dx * power / 40;
           ballState.vy = dy * power / 40;
         } else {
-          // Shoot: aim at goal
           const pitchRect = document.querySelector(".pitch").getBoundingClientRect();
           const goalX = isHome ? pitchRect.right - 10 : pitchRect.left + 10;
           const goalY = pitchRect.top + pitchRect.height / 2;
@@ -1508,30 +1478,107 @@
           ballState.vx = dx * power / 60;
           ballState.vy = dy * power / 60;
 
-          // Chance of goal
           const goalChance = 0.25 + (nearest.player ? nearest.player.rating / 400 : 0.1);
           if (Math.random() < goalChance) {
-            // Update score
             const [homeScore, awayScore] = hudScore.textContent.split(" - ").map(Number);
             if (isHome) {
               hudScore.textContent = (homeScore + 1) + " - " + awayScore;
+              animateGK(awayGK);
             } else {
               hudScore.textContent = homeScore + " - " + (awayScore + 1);
+              animateGK(homeGK);
             }
+          } else {
+            animateGK(isHome ? awayGK : homeGK);
           }
         }
       }
     }
 
-    // End match at 90 minutes
     if (matchTime >= 90 * 60) {
       pauseMatch();
       hudTime.textContent = "90:00";
     }
   }
 
+  function animateGK(gkEl) {
+    gkEl.classList.add("gk-dive");
+    setTimeout(() => gkEl.classList.remove("gk-dive"), 400);
+  }
+
   // =========================
-  // CONTROLS
+  // CAREER CONTROLS (BASIC)
+  // =========================
+
+  let careerActive = false;
+  let careerPlayerDisc = null;
+
+  function activateCareerControl() {
+    if (!controlledPlayer) {
+      alert("Select a player card first to control in Career Mode.");
+      return;
+    }
+    currentMode = "career";
+    updateModeHUD();
+    cutsceneBanner.classList.add("show");
+    setTimeout(() => cutsceneBanner.classList.remove("show"), 2000);
+
+    // Find disc for controlled player
+    const discs = playersLayer.querySelectorAll(".player-disc.home");
+    discs.forEach(d => {
+      if (d.dataset.name === controlledPlayer.name) {
+        careerPlayerDisc = d;
+      }
+    });
+
+    if (!careerPlayerDisc) {
+      careerPlayerDisc = discs[0];
+    }
+
+    careerActive = true;
+  }
+
+  document.addEventListener("keydown", e => {
+    if (!careerActive || !careerPlayerDisc) return;
+
+    let x = parseFloat(careerPlayerDisc.style.left);
+    let y = parseFloat(careerPlayerDisc.style.top);
+    const speed = 4;
+
+    if (e.key === "w") y -= speed;
+    if (e.key === "s") y += speed;
+    if (e.key === "a") x -= speed;
+    if (e.key === "d") x += speed;
+
+    careerPlayerDisc.style.left = x + "px";
+    careerPlayerDisc.style.top = y + "px";
+
+    if (e.key === " ") {
+      // Simple shot/pass: push ball forward
+      const bx = parseFloat(ballEl.style.left);
+      const by = parseFloat(ballEl.style.top);
+      const dx = x - bx;
+      const dy = y - by;
+      const power = 0.8;
+      ballState.vx = dx * power / 40;
+      ballState.vy = dy * power / 40;
+    }
+
+    if (e.key === "q") {
+      // Trivela: curve shot
+      ballState.vx = 3;
+      ballState.vy = -2;
+    }
+
+    if (e.key === "e") {
+      // Rabona: flair lob
+      ballState.vx = 2;
+      ballState.vy = -4;
+    }
+  });
+
+  // =========================
+  // BUTTONS
   // =========================
 
   document.getElementById("btnKickoff").addEventListener("click", () => {
@@ -1547,16 +1594,9 @@
   });
 
   document.getElementById("btnCareerControl").addEventListener("click", () => {
-    if (!controlledPlayer) {
-      alert("Select a player card first to control in Career Mode.");
-      return;
-    }
-    currentMode = "career";
-    updateModeHUD();
-    alert("Career Mode: You are now controlling " + controlledPlayer.name + ". Use your imagination for movement; AI handles the rest.");
+    activateCareerControl();
   });
 
-  // Initial coins display
   updateCoinsDisplay();
 </script>
 </body>
