@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>GitHub Crazy Soccer</title>
+  <title>GitHub FC26 Browser Edition</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>GitHub Crazy Soccer</h1>
-    <div class="subtitle">Arcade match · WASD + Space to shoot</div>
+    <h1>GitHub FC26 Browser Edition</h1>
+    <div class="subtitle">Fake 3D · Weather · Crowd · WASD + Space</div>
   </header>
 
   <main>
@@ -20,17 +20,28 @@
     <section id="hud">
       <div id="scoreHud">Home 0 - 0 Away</div>
       <div id="timeHud">00:00</div>
-      <button id="restartBtn">Restart Match</button>
+
+      <div class="row">
+        <button id="restartBtn">Restart Match</button>
+        <select id="weatherSelect">
+          <option value="clear">Clear Day</option>
+          <option value="rain">Rain</option>
+          <option value="night">Night Lights</option>
+        </select>
+      </div>
+
       <div class="controls">
         <p><strong>Controls:</strong></p>
         <p>Move: W / A / S / D</p>
         <p>Shoot: Space (toward goal)</p>
       </div>
+
+      <div id="crowdHud">Crowd: 100%</div>
     </section>
   </main>
 
   <footer>
-    Built for GitHub Pages · Crazy arcade soccer · Expand it, fork it, break it.
+    GitHub FC26 · Fake 3D, browser‑only. Fork it, mod it, break it.
   </footer>
 
   <script src="game.js"></script>
